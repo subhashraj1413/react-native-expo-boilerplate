@@ -3,18 +3,24 @@ import { Link } from "expo-router";
 import { View } from "react-native";
 import { Button } from "../../components/ui/Button";
 import { Screen } from "../../components/ui/Screen";
+import { Surface } from "../../components/ui/Surface";
 import { AppText } from "../../components/ui/Text";
+import { useTheme } from "../../hooks/useTheme";
 import { useNetwork } from "../../hooks/useNetwork";
 
 export default function LandingScreen() {
   const network = useNetwork();
+  const { theme } = useTheme();
 
   return (
     <Screen>
       <View className="flex-1 justify-between">
-        <View className="overflow-hidden rounded-[36px] border border-white/10">
+        <View
+          className="overflow-hidden rounded-[36px]"
+          style={{ borderColor: theme.border, borderWidth: 1 }}
+        >
           <LinearGradient
-            colors={["#521F2B", "#130D11", "#34131D"]}
+            colors={theme.heroGradient}
             end={{ x: 1, y: 1 }}
             start={{ x: 0, y: 0 }}
             style={{ padding: 28 }}
@@ -31,12 +37,12 @@ export default function LandingScreen() {
         </View>
 
         <View className="gap-4 pb-10">
-          <View className="rounded-[28px] border border-white/10 bg-white/5 p-6">
+          <Surface className="rounded-[28px] p-6">
             <AppText variant="subtitle">Environment</AppText>
             <AppText className="mt-3" tone="muted" variant="body">
               Connectivity status: {network.isConnected ? "online" : "offline"}
             </AppText>
-          </View>
+          </Surface>
           <Link asChild href="/(auth)/login">
             <Button label="Login" />
           </Link>

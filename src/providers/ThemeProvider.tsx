@@ -1,4 +1,12 @@
-import { createContext, useMemo, useState, type PropsWithChildren } from "react";
+import {
+  createContext,
+  useEffect,
+  useMemo,
+  useState,
+  type PropsWithChildren,
+} from "react";
+import { useColorScheme } from "react-native";
+import { themeStorage } from "../lib/storage/mmkv";
 import { themes } from "../theme";
 import type { ThemeMode, ThemeTokens } from "../types/global";
 
@@ -15,14 +23,27 @@ export const ThemeContext = createContext<ThemeContextValue>({
 });
 
 export const ThemeProvider = ({ children }: PropsWithChildren) => {
-  const [mode, setMode] = useState<ThemeMode>("dark");
+  const systemMode = useColorScheme() === "light" ? "light" : "dark";
+  const [mode, setMode] = useState<ThemeMode>(() => {
+    return themeStorage.read() ?? systemMode;
+  });
+
+  useEffect(() => {
+    if (!themeStorage.read()) {
+      setMode(systemMode);
+    }
+  }, [systemMode]);
 
   const value = useMemo(
     () => ({
       mode,
       theme: themes[mode],
       toggleTheme: () => {
-        setMode((current) => (current === "dark" ? "light" : "dark"));
+        setMode((current) => {
+          const next = current === "dark" ? "light" : "dark";
+          themeStorage.write(next);
+          return next;
+        });
       },
     }),
     [mode],

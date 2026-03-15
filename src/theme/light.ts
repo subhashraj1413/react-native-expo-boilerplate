@@ -1,12 +1,22 @@
 import { palette } from "../constants/colors";
 
 export const lightTheme = {
-  accent: palette.aqua,
+  accent: "#D93C4E",
+  accentBorder: "#F4C1C7",
+  accentSoft: "#FFE6E8",
   background: "#FFF6F4",
-  border: "#F0DAD6",
-  card: "#FFFDFC",
-  danger: palette.coral,
+  border: "#E9D8D5",
+  card: "#FFFFFF",
+  danger: "#D94B69",
+  dangerBorder: "#F4BDC8",
+  dangerSoft: "#FFE3E8",
+  heroGradient: ["#FFD7DB", "#FFF6F4", "#F2D9D4"],
+  inputBackground: "#FFF0ED",
   muted: "#7C676D",
-  primaryText: "#1E1418",
-  secondaryText: "#8D767D",
+  onAccent: "#FFF8F6",
+  placeholder: "#9E8085",
+  primaryText: "#23171B",
+  secondaryText: "#7D656D",
+  surfaceStrong: "#FFF0ED",
+  tabBar: "rgba(255,250,249,0.98)",
 } as const;

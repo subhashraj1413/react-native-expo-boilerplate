@@ -4,6 +4,7 @@ import type { KeyboardTypeOptions } from "react-native";
 import { View } from "react-native";
 import { Button } from "../../../components/ui/Button";
 import { Input } from "../../../components/ui/Input";
+import { Surface } from "../../../components/ui/Surface";
 import { AppText } from "../../../components/ui/Text";
 import { ErrorView } from "../../../components/feedback/ErrorView";
 
@@ -47,7 +48,7 @@ export const AuthForm = ({
   );
 
   return (
-    <View className="rounded-[30px] border border-white/10 bg-white/5 p-6">
+    <Surface className="rounded-[30px] p-6">
       <AppText variant="eyebrow">Auth flow</AppText>
       <AppText className="mt-3" variant="title">
         {title}
@@ -91,6 +92,6 @@ export const AuthForm = ({
         />
         {footer}
       </View>
-    </View>
+    </Surface>
   );
 };

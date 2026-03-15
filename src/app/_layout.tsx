@@ -3,15 +3,17 @@ import "../../global.css";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { AppProvider } from "../providers/AppProvider";
-import { palette } from "../constants/colors";
+import { useTheme } from "../hooks/useTheme";
 
-export default function RootLayout() {
+const RootNavigator = () => {
+  const { mode, theme } = useTheme();
+
   return (
-    <AppProvider>
-      <StatusBar style="light" />
+    <>
+      <StatusBar style={mode === "dark" ? "light" : "dark"} />
       <Stack
         screenOptions={{
-          contentStyle: { backgroundColor: palette.ink },
+          contentStyle: { backgroundColor: theme.background },
           headerShown: false,
         }}
       >
@@ -27,6 +29,14 @@ export default function RootLayout() {
         />
         <Stack.Screen name="+not-found" />
       </Stack>
+    </>
+  );
+};
+
+export default function RootLayout() {
+  return (
+    <AppProvider>
+      <RootNavigator />
     </AppProvider>
   );
 }

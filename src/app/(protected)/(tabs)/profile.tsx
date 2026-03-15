@@ -2,6 +2,7 @@ import { Link } from "expo-router";
 import { ScrollView, View } from "react-native";
 import { Button } from "../../../components/ui/Button";
 import { Screen } from "../../../components/ui/Screen";
+import { Surface } from "../../../components/ui/Surface";
 import { AppText } from "../../../components/ui/Text";
 import { useTheme } from "../../../hooks/useTheme";
 import { UserCard } from "../../../features/user/components/UserCard";
@@ -26,7 +27,7 @@ export default function ProfileScreen() {
         <View className="mt-6 gap-4">
           {data ? <UserCard profile={data} /> : null}
 
-          <View className="rounded-[28px] border border-white/10 bg-white/5 p-6">
+          <Surface className="rounded-[28px] p-6">
             <AppText variant="subtitle">Theme</AppText>
             <AppText className="mt-3" tone="muted" variant="body">
               Current mode: {mode}
@@ -34,13 +35,13 @@ export default function ProfileScreen() {
             <View className="mt-5 gap-3">
               <Button label="Toggle theme" onPress={toggleTheme} variant="secondary" />
               <Link asChild href="/modal">
-                <Button label="Open profile modal" />
+                <Button label="Open profile modal"  variant="secondary" />
               </Link>
               <Link asChild href="/(protected)/settings/account">
                 <Button label="Account settings" variant="ghost" />
               </Link>
             </View>
-          </View>
+          </Surface>
         </View>
       </ScrollView>
     </Screen>

@@ -2,6 +2,7 @@ import { useRouter } from "expo-router";
 import { View } from "react-native";
 import { Button } from "../components/ui/Button";
 import { Screen } from "../components/ui/Screen";
+import { Surface } from "../components/ui/Surface";
 import { AppText } from "../components/ui/Text";
 import { useSession } from "../features/auth/hooks/useSession";
 
@@ -12,7 +13,7 @@ export default function ModalScreen() {
   return (
     <Screen>
       <View className="flex-1 justify-center">
-        <View className="rounded-[32px] border border-white/10 bg-white/5 p-6">
+        <Surface className="rounded-[32px] p-6">
           <AppText variant="eyebrow">Profile modal</AppText>
           <AppText className="mt-4" variant="title">
             Session actions
@@ -37,7 +38,7 @@ export default function ModalScreen() {
               }}
             />
           </View>
-        </View>
+        </Surface>
       </View>
     </Screen>
   );

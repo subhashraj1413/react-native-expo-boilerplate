@@ -2,6 +2,7 @@ import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { Button } from "../../../components/ui/Button";
 import { Screen } from "../../../components/ui/Screen";
+import { Surface } from "../../../components/ui/Surface";
 import { AppText } from "../../../components/ui/Text";
 import { useSession } from "../../../features/auth/hooks/useSession";
 
@@ -20,7 +21,7 @@ export default function AccountScreen() {
           Signed in as {session?.user.email}
         </AppText>
 
-        <View className="mt-8 gap-4 rounded-[28px] border border-coral/20 bg-coral/10 p-6">
+        <Surface className="mt-8 gap-4 rounded-[28px] p-6" tone="danger">
           <AppText variant="subtitle">Sign out</AppText>
           <AppText className="mt-2" tone="muted" variant="body">
             Signing out clears the session state and resets RTK Query caches via
@@ -33,7 +34,7 @@ export default function AccountScreen() {
               router.replace("/(auth)/login");
             }}
           />
-        </View>
+        </Surface>
       </View>
     </Screen>
   );

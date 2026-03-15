@@ -1,5 +1,7 @@
 import { View } from "react-native";
 import type { UserProfile } from "../types/user.types";
+import { useTheme } from "../../../hooks/useTheme";
+import { Surface } from "../../../components/ui/Surface";
 import { AppText } from "../../../components/ui/Text";
 
 type UserCardProps = {
@@ -7,10 +9,15 @@ type UserCardProps = {
 };
 
 export const UserCard = ({ profile }: UserCardProps) => {
+  const { theme } = useTheme();
+
   return (
-    <View className="rounded-[28px] border border-white/10 bg-white/5 p-6">
-      <View className="h-16 w-16 items-center justify-center rounded-full bg-aqua">
-        <AppText className="text-sand" variant="title">
+    <Surface className="rounded-[28px] p-6">
+      <View
+        className="h-16 w-16 items-center justify-center rounded-full"
+        style={{ backgroundColor: theme.accent }}
+      >
+        <AppText style={{ color: theme.onAccent }} variant="title">
           {profile.name
             .split(" ")
             .map((part) => part[0])
@@ -29,17 +36,14 @@ export const UserCard = ({ profile }: UserCardProps) => {
 
       <View className="mt-6 gap-3">
         {profile.highlights.map((item) => (
-          <View
-            className="rounded-2xl border border-white/10 bg-panel px-4 py-3"
-            key={item.id}
-          >
+          <Surface className="rounded-2xl px-4 py-3" key={item.id} tone="strong">
             <AppText variant="eyebrow">{item.label}</AppText>
             <AppText className="mt-2" variant="body">
               {item.value}
             </AppText>
-          </View>
+          </Surface>
         ))}
       </View>
-    </View>
+    </Surface>
   );
 };

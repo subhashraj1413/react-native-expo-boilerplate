@@ -1,5 +1,7 @@
 import { View } from "react-native";
+import { useTheme } from "../../../hooks/useTheme";
 import { formatTimeLabel } from "../../../utils/format";
+import { Surface } from "../../../components/ui/Surface";
 import { AppText } from "../../../components/ui/Text";
 import type { FeedItem } from "../types/feed.types";
 
@@ -8,8 +10,10 @@ type FeedCardProps = {
 };
 
 export const FeedCard = ({ item }: FeedCardProps) => {
+  const { theme } = useTheme();
+
   return (
-    <View className="rounded-[28px] border border-white/10 bg-white/5 p-5">
+    <Surface className="rounded-[28px] p-5">
       <View className="flex-row items-center justify-between gap-4">
         <AppText className="flex-1" variant="subtitle">
           {item.title}
@@ -23,16 +27,21 @@ export const FeedCard = ({ item }: FeedCardProps) => {
       </AppText>
       <View className="mt-4 flex-row flex-wrap gap-2">
         {item.tags.map((tag) => (
-          <View
-            className="rounded-full border border-aqua/20 bg-aqua/10 px-3 py-1"
+          <Surface
+            className="rounded-full px-3 py-1"
             key={tag}
+            style={{
+              backgroundColor: theme.accentSoft,
+              borderColor: theme.accentBorder,
+            }}
+            tone="accent"
           >
             <AppText tone="accent" variant="caption">
               {tag}
             </AppText>
-          </View>
+          </Surface>
         ))}
       </View>
-    </View>
+    </Surface>
   );
 };

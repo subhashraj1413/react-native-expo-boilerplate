@@ -1,21 +1,24 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
+import { useTheme } from "../../../hooks/useTheme";
 
 export default function ProtectedTabsLayout() {
+  const { theme } = useTheme();
+
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        sceneStyle: { backgroundColor: "#07131C" },
-        tabBarActiveTintColor: "#81F3D0",
-        tabBarInactiveTintColor: "#6A7F95",
+        sceneStyle: { backgroundColor: theme.background },
+        tabBarActiveTintColor: theme.accent,
+        tabBarInactiveTintColor: theme.secondaryText,
         tabBarLabelStyle: {
           fontSize: 12,
           fontWeight: "600",
           marginBottom: 8,
         },
         tabBarStyle: {
-          backgroundColor: "rgba(16, 33, 49, 0.97)",
+          backgroundColor: theme.tabBar,
           borderTopWidth: 0,
           borderRadius: 28,
           bottom: 18,

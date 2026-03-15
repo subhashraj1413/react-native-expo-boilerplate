@@ -1,9 +1,12 @@
 import type { PropsWithChildren } from "react";
+import type { StyleProp, TextStyle } from "react-native";
 import { Text as RNText } from "react-native";
+import { useTheme } from "../../hooks/useTheme";
 
 type AppTextProps = PropsWithChildren<{
   className?: string;
-  tone?: "accent" | "default" | "muted";
+  style?: StyleProp<TextStyle>;
+  tone?: "accent" | "danger" | "default" | "muted";
   variant?: "body" | "caption" | "eyebrow" | "subtitle" | "title";
 }>;
 
@@ -15,20 +18,27 @@ const variantClasses = {
   title: "text-3xl font-bold leading-10",
 };
 
-const toneClasses = {
-  accent: "text-aqua",
-  default: "text-sand",
-  muted: "text-mist",
-};
-
 export const AppText = ({
   children,
   className = "",
+  style,
   tone = "default",
   variant = "body",
 }: AppTextProps) => {
+  const { theme } = useTheme();
+
+  const toneStyles = {
+    accent: { color: theme.accent },
+    danger: { color: theme.danger },
+    default: { color: theme.primaryText },
+    muted: { color: theme.secondaryText },
+  } as const;
+
   return (
-    <RNText className={`${variantClasses[variant]} ${toneClasses[tone]} ${className}`}>
+    <RNText
+      className={`${variantClasses[variant]} ${className}`}
+      style={[toneStyles[tone], style]}
+    >
       {children}
     </RNText>
   );

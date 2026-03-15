@@ -1,27 +1,38 @@
-import { appApi, wait } from "../../../lib/api/client";
+import { appApi } from "../../../lib/api/client";
 import { queryTags } from "../../../lib/query/queryClient";
+import type { RootState } from "../../../lib/store";
+import { createApiError } from "../../../utils/format";
+import { selectSession } from "../../auth/store/auth.store";
+import type { Session } from "../../auth/types/auth.types";
 import type { UserProfile } from "../types/user.types";
 
-const profile: UserProfile = {
-  bio: "Operations lead focused on release quality, observability, and cross-team delivery.",
-  email: "maya@orbitops.app",
+const buildProfile = (session: Session): UserProfile => ({
+  bio: `${session.user.name} is focused on release quality, observability, and dependable cross-team delivery.`,
+  email: session.user.email,
   highlights: [
-    { id: "timezone", label: "Timezone", value: "GMT+4" },
-    { id: "squad", label: "Squad", value: "Growth Systems" },
-    { id: "tenure", label: "Tenure", value: "4 years" },
+    { id: "role", label: "Role", value: session.user.role },
+    { id: "access", label: "Access", value: "Authenticated session" },
+    { id: "email", label: "Email", value: session.user.email },
   ],
-  id: "user-orbit-001",
+  id: session.user.id,
   location: "Dubai",
-  name: "Maya Chen",
-  role: "Operations Director",
-};
+  name: session.user.name,
+  role: session.user.role,
+});
 
 export const userApi = appApi.injectEndpoints({
   endpoints: (build) => ({
     getCurrentUser: build.query<UserProfile, undefined>({
-      async queryFn() {
-        await wait(200);
-        return { data: profile };
+      queryFn(_arg, api) {
+        const session = selectSession(api.getState() as RootState);
+
+        if (!session) {
+          return {
+            error: createApiError("No active session was found.", 401),
+          };
+        }
+
+        return { data: buildProfile(session) };
       },
       providesTags: [{ type: queryTags.user, id: "CURRENT" }],
     }),

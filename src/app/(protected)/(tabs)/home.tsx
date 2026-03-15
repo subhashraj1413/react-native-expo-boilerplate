@@ -5,6 +5,7 @@ import { EmptyState } from "../../../components/feedback/EmptyState";
 import { Button } from "../../../components/ui/Button";
 import { Screen } from "../../../components/ui/Screen";
 import { AppText } from "../../../components/ui/Text";
+import { useTheme } from "../../../hooks/useTheme";
 import { useSession } from "../../../features/auth/hooks/useSession";
 import { FeedCard } from "../../../features/feed/components/FeedCard";
 import { useFeed } from "../../../features/feed/hooks/useFeed";
@@ -12,13 +13,17 @@ import { useFeed } from "../../../features/feed/hooks/useFeed";
 export default function HomeScreen() {
   const { session } = useSession();
   const { items } = useFeed();
+  const { theme } = useTheme();
 
   return (
     <Screen>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View className="overflow-hidden rounded-[34px] border border-white/10">
+        <View
+          className="overflow-hidden rounded-[34px]"
+          style={{ borderColor: theme.border, borderWidth: 1 }}
+        >
           <LinearGradient
-            colors={["#16384A", "#102131", "#173221"]}
+            colors={theme.heroGradient}
             end={{ x: 1, y: 1 }}
             start={{ x: 0, y: 0 }}
             style={{ padding: 24 }}

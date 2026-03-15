@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { Surface } from "../ui/Surface";
 import { AppText } from "../ui/Text";
 
 type ErrorViewProps = {
@@ -7,10 +7,10 @@ type ErrorViewProps = {
 
 export const ErrorView = ({ message }: ErrorViewProps) => {
   return (
-    <View className="rounded-2xl border border-coral/25 bg-coral/10 px-4 py-3">
-      <AppText className="text-coral" variant="body">
+    <Surface className="rounded-2xl px-4 py-3" tone="danger">
+      <AppText tone="danger" variant="body">
         {message}
       </AppText>
-    </View>
+    </Surface>
   );
 };
