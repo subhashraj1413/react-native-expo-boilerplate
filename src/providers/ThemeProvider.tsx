@@ -10,7 +10,7 @@ import { themeStorage } from "../lib/storage/mmkv";
 import { themes } from "../theme";
 import type { ThemeMode, ThemeTokens } from "../types/global";
 
-type ThemeContextValue = {
+export type ThemeContextValue = {
   mode: ThemeMode;
   theme: ThemeTokens;
   toggleTheme: () => void;
@@ -34,7 +34,7 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
     }
   }, [systemMode]);
 
-  const value = useMemo(
+  const value = useMemo<ThemeContextValue>(
     () => ({
       mode,
       theme: themes[mode],

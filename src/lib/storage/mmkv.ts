@@ -1,65 +1,27 @@
 import type { Session } from "../../features/auth/types/auth.types";
 import type { ThemeMode } from "../../types/global";
-
-const SESSION_KEY = "orbit-session";
-const THEME_KEY = "orbit-theme";
-let memorySession = "";
-let memoryTheme: ThemeMode | null = null;
-
-const getWebStorage = () => {
-  if (typeof window === "undefined") {
-    return null;
-  }
-
-  return window.localStorage;
-};
+import { sqliteStorage } from "./sqlite";
 
 export const sessionStorage = {
   clear() {
-    const webStorage = getWebStorage();
-    memorySession = "";
-
-    webStorage?.removeItem(SESSION_KEY);
+    sqliteStorage.clearSession();
   },
   read(): Session | null {
-    const webStorage = getWebStorage();
-    const raw = webStorage?.getItem(SESSION_KEY) ?? memorySession;
-
-    if (!raw) {
-      return null;
-    }
-
-    try {
-      return JSON.parse(raw) as Session;
-    } catch {
-      return null;
-    }
+    return sqliteStorage.readSession();
   },
   write(session: Session) {
-    const raw = JSON.stringify(session);
-    const webStorage = getWebStorage();
-
-    memorySession = raw;
-    webStorage?.setItem(SESSION_KEY, raw);
+    sqliteStorage.writeSession(session);
   },
 };
 
 export const themeStorage = {
   clear() {
-    const webStorage = getWebStorage();
-    memoryTheme = null;
-    webStorage?.removeItem(THEME_KEY);
+    sqliteStorage.writeTheme("dark");
   },
   read(): ThemeMode | null {
-    const webStorage = getWebStorage();
-    const raw = webStorage?.getItem(THEME_KEY) ?? memoryTheme;
-
-    return raw === "dark" || raw === "light" ? raw : null;
+    return sqliteStorage.readTheme();
   },
   write(mode: ThemeMode) {
-    const webStorage = getWebStorage();
-
-    memoryTheme = mode;
-    webStorage?.setItem(THEME_KEY, mode);
+    sqliteStorage.writeTheme(mode);
   },
 };

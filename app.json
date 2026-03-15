@@ -9,7 +9,8 @@
     "newArchEnabled": true,
     "plugins": [
       "expo-router",
-      "expo-font"
+      "expo-font",
+      "expo-sqlite"
     ],
     "ios": {
       "bundleIdentifier": "com.reactnativeexpoboilerplate",

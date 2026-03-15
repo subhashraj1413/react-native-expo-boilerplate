@@ -98,6 +98,8 @@ PODS:
   - ExpoRouter (55.0.5):
     - ExpoModulesCore
     - RNScreens
+  - ExpoSQLite (55.0.10):
+    - ExpoModulesCore
   - ExpoSymbols (55.0.5):
     - ExpoModulesCore
   - fast_float (8.0.0)
@@ -2952,6 +2954,7 @@ DEPENDENCIES:
   - ExpoModulesCore (from `../node_modules/expo-modules-core`)
   - ExpoModulesJSI (from `../node_modules/expo-modules-core`)
   - ExpoRouter (from `../node_modules/expo-router/ios`)
+  - ExpoSQLite (from `../node_modules/expo-sqlite/ios`)
   - ExpoSymbols (from `../node_modules/expo-symbols/ios`)
   - fast_float (from `../node_modules/react-native/third-party-podspecs/fast_float.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
@@ -3082,6 +3085,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-modules-core"
   ExpoRouter:
     :path: "../node_modules/expo-router/ios"
+  ExpoSQLite:
+    :path: "../node_modules/expo-sqlite/ios"
   ExpoSymbols:
     :path: "../node_modules/expo-symbols/ios"
   fast_float:
@@ -3264,6 +3269,7 @@ SPEC CHECKSUMS:
   ExpoModulesCore: b22629f1f1adf4d174c218ff9e0d7366b8b0cc9d
   ExpoModulesJSI: 46dab6c6d9e181bf94757367a0d569bfc7fffd99
   ExpoRouter: 5b4f8428745799125d02d66896b7e6e680e077c6
+  ExpoSQLite: 77506d3d056c57118280d1e2a2d76cc06e4926b3
   ExpoSymbols: 3d67a96643245a5d933ce7fbf535f95eb541f617
   fast_float: b32c788ed9c6a8c584d114d0047beda9664e7cc6
   FBLazyVector: f1200e6ef6cf24885501668bdbb9eff4cf48843f

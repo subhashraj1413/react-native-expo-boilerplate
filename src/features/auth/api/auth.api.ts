@@ -1,6 +1,7 @@
 import { DEMO_CREDENTIALS } from "../../../constants/env";
 import { appApi, wait } from "../../../lib/api/client";
 import { analytics } from "../../../lib/analytics/analytics";
+import { sqliteUserRepository } from "../../../lib/storage/sqlite";
 import { createApiError } from "../../../utils/format";
 import { authActions } from "../store/auth.store";
 import type {
@@ -10,16 +11,6 @@ import type {
   Session,
 } from "../types/auth.types";
 
-const buildSession = (name: string, email: string): Session => ({
-  token: "orbit-session-token",
-  user: {
-    email,
-    id: "user-orbit-001",
-    name,
-    role: "Operations Director",
-  },
-});
-
 export const authApi = appApi.injectEndpoints({
   endpoints: (build) => ({
     forgotPassword: build.mutation<{ message: string }, ForgotPasswordPayload>({
@@ -28,6 +19,10 @@ export const authApi = appApi.injectEndpoints({
 
         if (!payload.email.includes("@")) {
           return { error: createApiError("Enter a valid email address.") };
+        }
+
+        if (!sqliteUserRepository.hasUserWithEmail(payload.email)) {
+          return { error: createApiError("No account exists for this email.", 404) };
         }
 
         analytics.track("auth_forgot_password", { email: payload.email });
@@ -50,11 +45,12 @@ export const authApi = appApi.injectEndpoints({
       },
       async queryFn(payload) {
         await wait(260);
+        const session = sqliteUserRepository.getUserByCredentials(
+          payload.email,
+          payload.password,
+        );
 
-        if (
-          payload.email.trim().toLowerCase() !== DEMO_CREDENTIALS.email ||
-          payload.password !== DEMO_CREDENTIALS.password
-        ) {
+        if (!session) {
           return {
             error: createApiError(
               `Use ${DEMO_CREDENTIALS.email} / ${DEMO_CREDENTIALS.password}`,
@@ -64,7 +60,7 @@ export const authApi = appApi.injectEndpoints({
         }
 
         return {
-          data: buildSession("Maya Chen", payload.email.trim().toLowerCase()),
+          data: session,
         };
       },
     }),
@@ -90,9 +86,22 @@ export const authApi = appApi.injectEndpoints({
 
         analytics.track("auth_register", { email: payload.email });
 
-        return {
-          data: buildSession(payload.fullName.trim(), payload.email.toLowerCase()),
-        };
+        try {
+          return {
+            data: sqliteUserRepository.createUser({
+              email: payload.email,
+              fullName: payload.fullName,
+              password: payload.password,
+            }),
+          };
+        } catch (error) {
+          return {
+            error: createApiError(
+              error instanceof Error ? error.message : "Unable to create account.",
+              409,
+            ),
+          };
+        }
       },
     }),
   }),
