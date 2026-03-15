@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { ReactNode } from "react";
 import type { KeyboardTypeOptions } from "react-native";
 import { View } from "react-native";
@@ -45,15 +45,6 @@ export const AuthForm = ({
       return result;
     }, {}),
   );
-
-  useEffect(() => {
-    setValues((current) =>
-      fields.reduce<Record<string, string>>((result, field) => {
-        result[field.name] = initialValues[field.name] ?? current[field.name];
-        return result;
-      }, {}),
-    );
-  }, [fields, initialValues]);
 
   return (
     <View className="rounded-[30px] border border-white/10 bg-white/5 p-6">

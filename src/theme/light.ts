@@ -2,11 +2,11 @@ import { palette } from "../constants/colors";
 
 export const lightTheme = {
   accent: palette.aqua,
-  background: "#F3F7FB",
-  border: "#D6E0EA",
-  card: "#FFFFFF",
+  background: "#FFF6F4",
+  border: "#F0DAD6",
+  card: "#FFFDFC",
   danger: palette.coral,
-  muted: "#61778D",
-  primaryText: "#0F1D29",
-  secondaryText: "#5D7184",
+  muted: "#7C676D",
+  primaryText: "#1E1418",
+  secondaryText: "#8D767D",
 } as const;

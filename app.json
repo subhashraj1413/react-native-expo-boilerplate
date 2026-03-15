@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Orbit Workspace",
-    "slug": "orbit-workspace",
-    "scheme": "orbitworkspace",
+    "name": "React Native Expo Boilerplate",
+    "slug": "react-native-expo-boilerplate",
+    "scheme": "reactnativeexpoboilerplate",
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "dark",
@@ -12,11 +12,11 @@
       "expo-font"
     ],
     "ios": {
-      "bundleIdentifier": "com.ReactNativeReduxTemplate",
+      "bundleIdentifier": "com.reactnativeexpoboilerplate",
       "supportsTablet": true
     },
     "android": {
-      "package": "com.ReactNativeReduxTemplate"
+      "package": "com.reactnativeexpoboilerplate"
     }
   }
 }

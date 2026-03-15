@@ -15,7 +15,7 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'ReactNativeReduxTemplate' do
+target 'ReactNativeExpoBoilerplate' do
   use_expo_modules!
 
   if ENV['EXPO_USE_COMMUNITY_AUTOLINKING'] == '1'
@@ -41,7 +41,7 @@ target 'ReactNativeReduxTemplate' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'ReactNativeReduxTemplateTests' do
+  target 'ReactNativeExpoBoilerplateTests' do
     inherit! :complete
     # Pods for testing
   end

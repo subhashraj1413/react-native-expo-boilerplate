@@ -3,6 +3,7 @@ import "../../global.css";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { AppProvider } from "../providers/AppProvider";
+import { palette } from "../constants/colors";
 
 export default function RootLayout() {
   return (
@@ -10,7 +11,7 @@ export default function RootLayout() {
       <StatusBar style="light" />
       <Stack
         screenOptions={{
-          contentStyle: { backgroundColor: "#07131C" },
+          contentStyle: { backgroundColor: palette.ink },
           headerShown: false,
         }}
       >

@@ -10,7 +10,7 @@ export const UserCard = ({ profile }: UserCardProps) => {
   return (
     <View className="rounded-[28px] border border-white/10 bg-white/5 p-6">
       <View className="h-16 w-16 items-center justify-center rounded-full bg-aqua">
-        <AppText className="text-ink" variant="title">
+        <AppText className="text-sand" variant="title">
           {profile.name
             .split(" ")
             .map((part) => part[0])

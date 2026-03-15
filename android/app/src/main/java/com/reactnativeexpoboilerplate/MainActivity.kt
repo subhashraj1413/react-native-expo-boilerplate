@@ -1,4 +1,4 @@
-package com.ReactNativeReduxTemplate
+package com.reactnativeexpoboilerplate
 import expo.modules.ReactActivityDelegateWrapper
 
 import com.facebook.react.ReactActivity

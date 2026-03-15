@@ -14,7 +14,7 @@ export default function LandingScreen() {
       <View className="flex-1 justify-between">
         <View className="overflow-hidden rounded-[36px] border border-white/10">
           <LinearGradient
-            colors={["#173748", "#07131C", "#133524"]}
+            colors={["#521F2B", "#130D11", "#34131D"]}
             end={{ x: 1, y: 1 }}
             start={{ x: 0, y: 0 }}
             style={{ padding: 28 }}

@@ -9,13 +9,13 @@ type ButtonProps = PressableProps & {
 
 const buttonStyles = {
   ghost: "border border-white/10 bg-transparent",
-  primary: "bg-aqua",
-  secondary: "border border-white/10 bg-white/5",
+  primary: "border border-aqua/70 bg-aqua",
+  secondary: "border border-aqua/20 bg-aqua/10",
 };
 
 const labelStyles = {
   ghost: "text-sand",
-  primary: "text-ink",
+  primary: "text-sand",
   secondary: "text-sand",
 };
 

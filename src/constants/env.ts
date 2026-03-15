@@ -1,6 +1,6 @@
 export const APP_ENV = {
-  appName: "Orbit Workspace",
-  scheme: "orbitworkspace",
+  appName: "React Native Expo Boilerplate",
+  scheme: "reactnativeexpoboilerplate",
 } as const;
 
 export const DEMO_CREDENTIALS = {

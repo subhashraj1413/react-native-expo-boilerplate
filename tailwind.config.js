@@ -5,13 +5,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        aqua: "#81F3D0",
-        coral: "#FF8F70",
-        ink: "#07131C",
-        lime: "#D5FF72",
-        mist: "#97ABC1",
-        panel: "#102131",
-        sand: "#F5EBD6",
+        aqua: "#F45866",
+        coral: "#FF8A95",
+        ink: "#130D11",
+        lime: "#FFBF70",
+        mist: "#B89EA4",
+        panel: "#21151A",
+        sand: "#FFF4F1",
       },
     },
   },
