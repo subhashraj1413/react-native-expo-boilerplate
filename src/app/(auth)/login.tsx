@@ -18,19 +18,8 @@ export default function LoginScreen() {
   );
 
   return (
-    <Screen>
+    <Screen backHref="/(public)/landing" showBackButton>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View className="py-10">
-          <AppText variant="eyebrow">Sign in</AppText>
-          <AppText className="mt-4 max-w-[320px]" variant="title">
-            Continue into the protected workspace.
-          </AppText>
-          <AppText className="mt-4 max-w-[330px]" tone="muted" variant="body">
-            The auth flow is isolated in its own route group and feeds the
-            Redux session state through RTK Query mutations.
-          </AppText>
-        </View>
-
         <AuthForm
           ctaLabel="Login"
           errorMessage={error ? errorMessage : null}

@@ -13,8 +13,8 @@ export default function ProfileScreen() {
   const { mode, toggleTheme } = useTheme();
 
   return (
-    <Screen>
-      <ScrollView showsVerticalScrollIndicator={false}>
+    <Screen className="pb-6">
+      <ScrollView showsVerticalScrollIndicator={false} className="mb-10">
         <AppText variant="eyebrow">Profile</AppText>
         <AppText className="mt-4" variant="title">
           Identity and preferences live here.
@@ -27,7 +27,7 @@ export default function ProfileScreen() {
         <View className="mt-6 gap-4">
           {data ? <UserCard profile={data} /> : null}
 
-          <Surface className="rounded-[28px] p-6">
+          <Surface className="rounded-[28px] p-6 mb-10">
             <AppText variant="subtitle">Theme</AppText>
             <AppText className="mt-3" tone="muted" variant="body">
               Current mode: {mode}

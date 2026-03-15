@@ -6,7 +6,7 @@ import { AppText } from "@/components/ui/Text";
 
 export default function SettingsScreen() {
   return (
-    <Screen>
+    <Screen backHref="/(protected)/(tabs)/profile" showBackButton>
       <ScrollView showsVerticalScrollIndicator={false}>
         <AppText variant="eyebrow">Settings</AppText>
         <AppText className="mt-4" variant="title">

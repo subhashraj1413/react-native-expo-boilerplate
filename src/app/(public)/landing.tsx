@@ -1,7 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { Link } from "expo-router";
-import { View } from "react-native";
-import { Button } from "@/components/ui/Button";
+import { Pressable, View } from "react-native";
 import { Screen } from "@/components/ui/Screen";
 import { Surface } from "@/components/ui/Surface";
 import { AppText } from "@/components/ui/Text";
@@ -43,11 +42,78 @@ export default function LandingScreen() {
               Connectivity status: {network.isConnected ? "online" : "offline"}
             </AppText>
           </Surface>
-          <Link asChild href="/(auth)/login" >
-            <Button label="Login" variant="secondary" />
+
+          <Link asChild href="/(auth)/login">
+            <Pressable
+              className="overflow-hidden rounded-[30px]"
+              style={{
+                shadowColor: theme.accent,
+                shadowOffset: { width: 0, height: 18 },
+                shadowOpacity: 0.18,
+                shadowRadius: 28,
+              }}
+            >
+              <LinearGradient
+                colors={[theme.accent, theme.danger]}
+                end={{ x: 1, y: 1 }}
+                start={{ x: 0, y: 0 }}
+                style={{ paddingHorizontal: 22, paddingVertical: 20 }}
+              >
+                <View className="flex-row items-center justify-between">
+                  <View>
+                    <AppText style={{ color: theme.onAccent }} variant="subtitle">
+                      Login
+                    </AppText>
+                    <AppText
+                      style={{ color: theme.onAccent, opacity: 0.8 }}
+                      variant="caption"
+                    >
+                      Enter the workspace
+                    </AppText>
+                  </View>
+                  <View
+                    className="items-center justify-center rounded-full"
+                    style={{
+                      backgroundColor: "rgba(255,255,255,0.16)",
+                      height: 44,
+                      width: 44,
+                    }}
+                  >
+                    <AppText style={{ color: theme.onAccent }} variant="subtitle">
+                      →
+                    </AppText>
+                  </View>
+                </View>
+              </LinearGradient>
+            </Pressable>
           </Link>
+
           <Link asChild href="/(auth)/register">
-            <Button label="Register" variant="ghost" />
+            <Pressable
+              className="rounded-[30px] px-5 py-5"
+              style={{
+                backgroundColor: theme.card,
+                borderColor: theme.border,
+                borderWidth: 1,
+              }}
+            >
+              <View className="flex-row items-center justify-between">
+                <View>
+                  <AppText variant="subtitle">Register</AppText>
+                  <AppText className="mt-1" tone="muted" variant="caption">
+                    Create a fresh account
+                  </AppText>
+                </View>
+                <View
+                  className="rounded-full px-3 py-2"
+                  style={{ backgroundColor: theme.accentSoft }}
+                >
+                  <AppText tone="accent" variant="caption">
+                    New
+                  </AppText>
+                </View>
+              </View>
+            </Pressable>
           </Link>
         </View>
       </View>

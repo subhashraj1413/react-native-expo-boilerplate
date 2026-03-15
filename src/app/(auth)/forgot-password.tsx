@@ -18,9 +18,9 @@ export default function ForgotPasswordScreen() {
   );
 
   return (
-    <Screen>
+    <Screen backHref="/(auth)/login" showBackButton>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View className="py-10">
+        <View className="pb-10">
           <AuthForm
             ctaLabel="Send reset link"
             errorMessage={error ? errorMessage : null}

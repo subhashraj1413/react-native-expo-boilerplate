@@ -11,7 +11,7 @@ export default function AccountScreen() {
   const { session, signOut } = useSession();
 
   return (
-    <Screen>
+    <Screen backHref="/(protected)/settings" showBackButton>
       <View className="flex-1">
         <AppText variant="eyebrow">Account</AppText>
         <AppText className="mt-4" variant="title">
