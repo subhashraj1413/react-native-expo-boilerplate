@@ -1,12 +1,12 @@
 import { Link } from "expo-router";
 import { useMemo, useState } from "react";
 import { ScrollView, View } from "react-native";
-import { AuthForm } from "../../features/auth/components/AuthForm";
-import { useForgotPasswordMutation } from "../../features/auth/api/auth.api";
-import { Screen } from "../../components/ui/Screen";
-import { Button } from "../../components/ui/Button";
-import { AppText } from "../../components/ui/Text";
-import { formatApiError } from "../../utils/format";
+import { AuthForm } from "@/features/auth/components/AuthForm";
+import { useForgotPasswordMutation } from "@/features/auth/api/auth.api";
+import { Screen } from "@/components/ui/Screen";
+import { Button } from "@/components/ui/Button";
+import { AppText } from "@/components/ui/Text";
+import { formatApiError } from "@/utils/format";
 
 export default function ForgotPasswordScreen() {
   const [forgotPassword, { error, isLoading }] = useForgotPasswordMutation();

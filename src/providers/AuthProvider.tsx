@@ -1,7 +1,7 @@
 import { useEffect, type PropsWithChildren } from "react";
-import { useAppDispatch } from "../lib/store";
-import { sessionStorage } from "../lib/storage/mmkv";
-import { authActions } from "../features/auth/store/auth.store";
+import { useAppDispatch } from "@/lib/store";
+import { sessionStorage } from "@/lib/storage/mmkv";
+import { authActions } from "@/features/auth/store/auth.store";
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
   const dispatch = useAppDispatch();

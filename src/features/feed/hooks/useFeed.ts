@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { useDebounce } from "../../../hooks/useDebounce";
-import { useGetFeedQuery } from "../api/feed.api";
+import { useDebounce } from "@/hooks/useDebounce";
+import { useGetFeedQuery } from "@/features/feed/api/feed.api";
 
 export const useFeed = (searchTerm = "") => {
   const { data = [], ...queryState } = useGetFeedQuery(undefined);

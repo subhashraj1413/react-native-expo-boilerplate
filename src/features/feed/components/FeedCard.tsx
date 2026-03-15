@@ -1,9 +1,9 @@
 import { View } from "react-native";
-import { useTheme } from "../../../hooks/useTheme";
-import { formatTimeLabel } from "../../../utils/format";
-import { Surface } from "../../../components/ui/Surface";
-import { AppText } from "../../../components/ui/Text";
-import type { FeedItem } from "../types/feed.types";
+import { useTheme } from "@/hooks/useTheme";
+import { formatTimeLabel } from "@/utils/format";
+import { Surface } from "@/components/ui/Surface";
+import { AppText } from "@/components/ui/Text";
+import type { FeedItem } from "@/features/feed/types/feed.types";
 
 type FeedCardProps = {
   item: FeedItem;

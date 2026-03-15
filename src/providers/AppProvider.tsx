@@ -2,10 +2,10 @@ import type { PropsWithChildren } from "react";
 import { Provider } from "react-redux";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { store } from "../lib/store";
-import { AuthProvider } from "./AuthProvider";
-import { QueryProvider } from "./QueryProvider";
-import { ThemeProvider } from "./ThemeProvider";
+import { store } from "@/lib/store";
+import { AuthProvider } from "@/providers/AuthProvider";
+import { QueryProvider } from "@/providers/QueryProvider";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
 export const AppProvider = ({ children }: PropsWithChildren) => {
   return (

@@ -1,7 +1,7 @@
-import { appApi, wait } from "../../../lib/api/client";
-import { queryTags } from "../../../lib/query/queryClient";
-import { sqliteFeedRepository } from "../../../lib/storage/sqlite";
-import type { FeedItem } from "../types/feed.types";
+import { appApi, wait } from "@/lib/api/client";
+import { queryTags } from "@/lib/query/queryClient";
+import { sqliteFeedRepository } from "@/lib/storage/sqlite";
+import type { FeedItem } from "@/features/feed/types/feed.types";
 
 export const feedApi = appApi.injectEndpoints({
   endpoints: (build) => ({

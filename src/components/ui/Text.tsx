@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from "react";
 import type { StyleProp, TextStyle } from "react-native";
 import { Text as RNText } from "react-native";
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from "@/hooks/useTheme";
 
 type AppTextProps = PropsWithChildren<{
   className?: string;

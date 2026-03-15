@@ -7,6 +7,9 @@ import reactHooksPlugin from "eslint-plugin-react-hooks"
 import globals from "globals"
 import { config, configs } from "typescript-eslint"
 
+/** @type {Record<string, boolean | "readonly" | "writable" | "off">} */
+const nodeGlobals = globals.node
+
 const eslintConfig = config(
   {
     name: "global-ignores",
@@ -44,7 +47,7 @@ const eslintConfig = config(
     },
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.node,
+      globals: nodeGlobals,
       parserOptions: {
         projectService: {
           allowDefaultProject: ["babel.config.js", "metro.config.js"],
@@ -92,6 +95,14 @@ const eslintConfig = config(
         0,
         [{ allow: [], allowAsImport: false }],
       ],
+    },
+  },
+  {
+    name: "eslint-config-file",
+    files: ["eslint.config.mjs"],
+    rules: {
+      "@typescript-eslint/no-unsafe-assignment": 0,
+      "@typescript-eslint/no-unsafe-member-access": 0,
     },
   },
   {

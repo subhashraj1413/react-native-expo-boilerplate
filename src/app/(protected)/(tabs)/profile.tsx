@@ -1,12 +1,12 @@
 import { Link } from "expo-router";
 import { ScrollView, View } from "react-native";
-import { Button } from "../../../components/ui/Button";
-import { Screen } from "../../../components/ui/Screen";
-import { Surface } from "../../../components/ui/Surface";
-import { AppText } from "../../../components/ui/Text";
-import { useTheme } from "../../../hooks/useTheme";
-import { UserCard } from "../../../features/user/components/UserCard";
-import { useGetCurrentUserQuery } from "../../../features/user/api/user.api";
+import { Button } from "@/components/ui/Button";
+import { Screen } from "@/components/ui/Screen";
+import { Surface } from "@/components/ui/Surface";
+import { AppText } from "@/components/ui/Text";
+import { useTheme } from "@/hooks/useTheme";
+import { UserCard } from "@/features/user/components/UserCard";
+import { useGetCurrentUserQuery } from "@/features/user/api/user.api";
 
 export default function ProfileScreen() {
   const { data } = useGetCurrentUserQuery(undefined);

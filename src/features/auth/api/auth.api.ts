@@ -1,15 +1,15 @@
-import { DEMO_CREDENTIALS } from "../../../constants/env";
-import { appApi, wait } from "../../../lib/api/client";
-import { analytics } from "../../../lib/analytics/analytics";
-import { sqliteUserRepository } from "../../../lib/storage/sqlite";
-import { createApiError } from "../../../utils/format";
-import { authActions } from "../store/auth.store";
+import { DEMO_CREDENTIALS } from "@/constants/env";
+import { appApi, wait } from "@/lib/api/client";
+import { analytics } from "@/lib/analytics/analytics";
+import { sqliteUserRepository } from "@/lib/storage/sqlite";
+import { createApiError } from "@/utils/format";
+import { authActions } from "@/features/auth/store/auth.store";
 import type {
   ForgotPasswordPayload,
   LoginPayload,
   RegisterPayload,
   Session,
-} from "../types/auth.types";
+} from "@/features/auth/types/auth.types";
 
 export const authApi = appApi.injectEndpoints({
   endpoints: (build) => ({

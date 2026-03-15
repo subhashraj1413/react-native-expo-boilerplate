@@ -1,13 +1,13 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { SagaIterator } from "redux-saga";
 import { all, call, put, takeLatest } from "redux-saga/effects";
-import { analytics } from "./analytics/analytics";
-import { sessionStorage } from "./storage/mmkv";
-import { appApi } from "./api/client";
-import { userApi } from "../features/user/api/user.api";
-import { feedApi } from "../features/feed/api/feed.api";
-import { authActions } from "../features/auth/store/auth.store";
-import type { Session } from "../features/auth/types/auth.types";
+import { analytics } from "@/lib/analytics/analytics";
+import { sessionStorage } from "@/lib/storage/mmkv";
+import { appApi } from "@/lib/api/client";
+import { userApi } from "@/features/user/api/user.api";
+import { feedApi } from "@/features/feed/api/feed.api";
+import { authActions } from "@/features/auth/store/auth.store";
+import type { Session } from "@/features/auth/types/auth.types";
 
 function* handleSetSession(action: PayloadAction<Session>): SagaIterator {
   yield call([sessionStorage, "write"], action.payload);

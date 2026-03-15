@@ -1,10 +1,10 @@
-import { appApi } from "../../../lib/api/client";
-import { queryTags } from "../../../lib/query/queryClient";
-import { sqliteUserRepository } from "../../../lib/storage/sqlite";
-import type { RootState } from "../../../lib/store";
-import { createApiError } from "../../../utils/format";
-import { selectSession } from "../../auth/store/auth.store";
-import type { UserProfile } from "../types/user.types";
+import { appApi } from "@/lib/api/client";
+import { queryTags } from "@/lib/query/queryClient";
+import { sqliteUserRepository } from "@/lib/storage/sqlite";
+import type { RootState } from "@/lib/store";
+import { createApiError } from "@/utils/format";
+import { selectSession } from "@/features/auth/store/auth.store";
+import type { UserProfile } from "@/features/user/types/user.types";
 
 export const userApi = appApi.injectEndpoints({
   endpoints: (build) => ({

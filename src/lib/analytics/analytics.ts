@@ -1,4 +1,4 @@
-import { logger } from "../../utils/logger";
+import { logger } from "@/utils/logger";
 
 export const analytics = {
   track(event: string, payload?: Record<string, unknown>) {

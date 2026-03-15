@@ -1,12 +1,12 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { Link } from "expo-router";
 import { View } from "react-native";
-import { Button } from "../../components/ui/Button";
-import { Screen } from "../../components/ui/Screen";
-import { Surface } from "../../components/ui/Surface";
-import { AppText } from "../../components/ui/Text";
-import { useTheme } from "../../hooks/useTheme";
-import { useNetwork } from "../../hooks/useNetwork";
+import { Button } from "@/components/ui/Button";
+import { Screen } from "@/components/ui/Screen";
+import { Surface } from "@/components/ui/Surface";
+import { AppText } from "@/components/ui/Text";
+import { useTheme } from "@/hooks/useTheme";
+import { useNetwork } from "@/hooks/useNetwork";
 
 export default function LandingScreen() {
   const network = useNetwork();
@@ -43,11 +43,11 @@ export default function LandingScreen() {
               Connectivity status: {network.isConnected ? "online" : "offline"}
             </AppText>
           </Surface>
-          <Link asChild href="/(auth)/login">
-            <Button label="Login" />
+          <Link asChild href="/(auth)/login" >
+            <Button label="Login" variant="secondary" />
           </Link>
           <Link asChild href="/(auth)/register">
-            <Button label="Register" variant="secondary" />
+            <Button label="Register" variant="ghost" />
           </Link>
         </View>
       </View>

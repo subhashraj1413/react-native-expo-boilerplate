@@ -1,4 +1,4 @@
-import type { ApiError } from "../types/global";
+import type { ApiError } from "@/types/global";
 
 export const formatApiError = (error: unknown, fallback: string) => {
   if (

@@ -1,4 +1,4 @@
-import { palette } from "../constants/colors";
+import { palette } from "@/constants/colors";
 
 export const darkTheme = {
   accent: palette.aqua,

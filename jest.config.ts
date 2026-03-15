@@ -3,6 +3,9 @@ import type { Config } from "jest";
 const config: Config = {
   preset: "react-native",
   verbose: true,
+  moduleNameMapper: {
+    "^@/(.*)$": "<rootDir>/src/$1",
+  },
   /**
    * Without this we will get the following error:
    * `SyntaxError: Cannot use import statement outside a module`

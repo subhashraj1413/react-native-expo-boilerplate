@@ -1,5 +1,5 @@
-import { Surface } from "../ui/Surface";
-import { AppText } from "../ui/Text";
+import { Surface } from "@/components/ui/Surface";
+import { AppText } from "@/components/ui/Text";
 
 type ErrorViewProps = {
   message: string;

@@ -1,8 +1,8 @@
 import { View } from "react-native";
-import type { UserProfile } from "../types/user.types";
-import { useTheme } from "../../../hooks/useTheme";
-import { Surface } from "../../../components/ui/Surface";
-import { AppText } from "../../../components/ui/Text";
+import type { UserProfile } from "@/features/user/types/user.types";
+import { useTheme } from "@/hooks/useTheme";
+import { Surface } from "@/components/ui/Surface";
+import { AppText } from "@/components/ui/Text";
 
 type UserCardProps = {
   profile: UserProfile;

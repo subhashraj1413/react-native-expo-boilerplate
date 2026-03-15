@@ -2,11 +2,11 @@ import { useState } from "react";
 import type { ReactNode } from "react";
 import type { KeyboardTypeOptions } from "react-native";
 import { View } from "react-native";
-import { Button } from "../../../components/ui/Button";
-import { Input } from "../../../components/ui/Input";
-import { Surface } from "../../../components/ui/Surface";
-import { AppText } from "../../../components/ui/Text";
-import { ErrorView } from "../../../components/feedback/ErrorView";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+import { Surface } from "@/components/ui/Surface";
+import { AppText } from "@/components/ui/Text";
+import { ErrorView } from "@/components/feedback/ErrorView";
 
 export type AuthField = {
   autoCapitalize?: "characters" | "none" | "sentences" | "words";

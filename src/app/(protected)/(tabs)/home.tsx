@@ -1,14 +1,14 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { Link } from "expo-router";
 import { ScrollView, View } from "react-native";
-import { EmptyState } from "../../../components/feedback/EmptyState";
-import { Button } from "../../../components/ui/Button";
-import { Screen } from "../../../components/ui/Screen";
-import { AppText } from "../../../components/ui/Text";
-import { useTheme } from "../../../hooks/useTheme";
-import { useSession } from "../../../features/auth/hooks/useSession";
-import { FeedCard } from "../../../features/feed/components/FeedCard";
-import { useFeed } from "../../../features/feed/hooks/useFeed";
+import { EmptyState } from "@/components/feedback/EmptyState";
+import { Button } from "@/components/ui/Button";
+import { Screen } from "@/components/ui/Screen";
+import { AppText } from "@/components/ui/Text";
+import { useTheme } from "@/hooks/useTheme";
+import { useSession } from "@/features/auth/hooks/useSession";
+import { FeedCard } from "@/features/feed/components/FeedCard";
+import { useFeed } from "@/features/feed/hooks/useFeed";
 
 export default function HomeScreen() {
   const { session } = useSession();

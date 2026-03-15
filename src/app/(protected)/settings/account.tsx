@@ -1,10 +1,10 @@
 import { View } from "react-native";
 import { useRouter } from "expo-router";
-import { Button } from "../../../components/ui/Button";
-import { Screen } from "../../../components/ui/Screen";
-import { Surface } from "../../../components/ui/Surface";
-import { AppText } from "../../../components/ui/Text";
-import { useSession } from "../../../features/auth/hooks/useSession";
+import { Button } from "@/components/ui/Button";
+import { Screen } from "@/components/ui/Screen";
+import { Surface } from "@/components/ui/Surface";
+import { AppText } from "@/components/ui/Text";
+import { useSession } from "@/features/auth/hooks/useSession";
 
 export default function AccountScreen() {
   const router = useRouter();

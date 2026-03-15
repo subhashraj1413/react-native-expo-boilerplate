@@ -1,7 +1,7 @@
 import type { PressableProps } from "react-native";
 import { Pressable } from "react-native";
-import { useTheme } from "../../hooks/useTheme";
-import { AppText } from "./Text";
+import { useTheme } from "@/hooks/useTheme";
+import { AppText } from "@/components/ui/Text";
 
 type ButtonProps = PressableProps & {
   label: string;

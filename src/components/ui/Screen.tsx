@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from "react";
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from "@/hooks/useTheme";
 
 type ScreenProps = PropsWithChildren<{
   className?: string;

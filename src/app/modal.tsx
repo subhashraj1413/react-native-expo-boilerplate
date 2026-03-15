@@ -1,10 +1,10 @@
 import { useRouter } from "expo-router";
 import { View } from "react-native";
-import { Button } from "../components/ui/Button";
-import { Screen } from "../components/ui/Screen";
-import { Surface } from "../components/ui/Surface";
-import { AppText } from "../components/ui/Text";
-import { useSession } from "../features/auth/hooks/useSession";
+import { Button } from "@/components/ui/Button";
+import { Screen } from "@/components/ui/Screen";
+import { Surface } from "@/components/ui/Surface";
+import { AppText } from "@/components/ui/Text";
+import { useSession } from "@/features/auth/hooks/useSession";
 
 export default function ModalScreen() {
   const router = useRouter();

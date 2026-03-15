@@ -2,9 +2,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import createSagaMiddleware from "redux-saga";
 import { useDispatch, useSelector } from "react-redux";
-import { authReducer } from "../features/auth/store/auth.store";
-import { appApi } from "./api/client";
-import { rootSaga } from "./saga";
+import { authReducer } from "@/features/auth/store/auth.store";
+import { appApi } from "@/lib/api/client";
+import { rootSaga } from "@/lib/saga";
 
 const sagaMiddleware = createSagaMiddleware();
 

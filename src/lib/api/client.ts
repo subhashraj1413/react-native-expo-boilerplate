@@ -1,6 +1,6 @@
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
-import { queryTags } from "../query/queryClient";
-import type { ApiError } from "../../types/global";
+import { queryTags } from "@/lib/query/queryClient";
+import type { ApiError } from "@/types/global";
 
 export const wait = (duration = 250) =>
   new Promise((resolve) => {

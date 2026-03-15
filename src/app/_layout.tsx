@@ -2,8 +2,8 @@ import "../../global.css";
 
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { AppProvider } from "../providers/AppProvider";
-import { useTheme } from "../hooks/useTheme";
+import { AppProvider } from "@/providers/AppProvider";
+import { useTheme } from "@/hooks/useTheme";
 
 const RootNavigator = () => {
   const { mode, theme } = useTheme();

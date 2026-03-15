@@ -1,11 +1,11 @@
 import { Link } from "expo-router";
 import { useMemo } from "react";
 import { ScrollView, View } from "react-native";
-import { useRegisterMutation } from "../../features/auth/api/auth.api";
-import { AuthForm } from "../../features/auth/components/AuthForm";
-import { Screen } from "../../components/ui/Screen";
-import { Button } from "../../components/ui/Button";
-import { formatApiError } from "../../utils/format";
+import { useRegisterMutation } from "@/features/auth/api/auth.api";
+import { AuthForm } from "@/features/auth/components/AuthForm";
+import { Screen } from "@/components/ui/Screen";
+import { Button } from "@/components/ui/Button";
+import { formatApiError } from "@/utils/format";
 
 export default function RegisterScreen() {
   const [register, { error, isLoading }] = useRegisterMutation();

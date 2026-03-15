@@ -1,7 +1,7 @@
 import { Redirect, Stack } from "expo-router";
 import { ActivityIndicator } from "react-native";
-import { useSession } from "../../features/auth/hooks/useSession";
-import { Screen } from "../../components/ui/Screen";
+import { useSession } from "@/features/auth/hooks/useSession";
+import { Screen } from "@/components/ui/Screen";
 
 export default function AuthLayout() {
   const { hydrated, isAuthenticated } = useSession();

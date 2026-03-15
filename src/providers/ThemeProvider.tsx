@@ -6,9 +6,9 @@ import {
   type PropsWithChildren,
 } from "react";
 import { useColorScheme } from "react-native";
-import { themeStorage } from "../lib/storage/mmkv";
-import { themes } from "../theme";
-import type { ThemeMode, ThemeTokens } from "../types/global";
+import { themeStorage } from "@/lib/storage/mmkv";
+import { themes } from "@/theme";
+import type { ThemeMode, ThemeTokens } from "@/types/global";
 
 export type ThemeContextValue = {
   mode: ThemeMode;

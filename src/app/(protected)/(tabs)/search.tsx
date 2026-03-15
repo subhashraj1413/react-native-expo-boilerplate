@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { ScrollView, View } from "react-native";
-import { EmptyState } from "../../../components/feedback/EmptyState";
-import { Input } from "../../../components/ui/Input";
-import { Screen } from "../../../components/ui/Screen";
-import { AppText } from "../../../components/ui/Text";
-import { FeedCard } from "../../../features/feed/components/FeedCard";
-import { useFeed } from "../../../features/feed/hooks/useFeed";
+import { EmptyState } from "@/components/feedback/EmptyState";
+import { Input } from "@/components/ui/Input";
+import { Screen } from "@/components/ui/Screen";
+import { AppText } from "@/components/ui/Text";
+import { FeedCard } from "@/features/feed/components/FeedCard";
+import { useFeed } from "@/features/feed/hooks/useFeed";
 
 export default function SearchScreen() {
   const [searchTerm, setSearchTerm] = useState("");

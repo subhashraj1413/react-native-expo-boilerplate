@@ -11,6 +11,17 @@ const config = api => {
       ["babel-preset-expo", { jsxImportSource: "nativewind" }],
       "nativewind/babel",
     ],
+    plugins: [
+      [
+        "module-resolver",
+        {
+          alias: {
+            "@": "./src",
+          },
+          extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
+        },
+      ],
+    ],
   }
 }
 

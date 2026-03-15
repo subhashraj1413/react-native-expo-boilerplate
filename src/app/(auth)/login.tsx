@@ -1,13 +1,13 @@
 import { Link } from "expo-router";
 import { useMemo } from "react";
 import { ScrollView, View } from "react-native";
-import { DEMO_CREDENTIALS } from "../../constants/env";
-import { AuthForm } from "../../features/auth/components/AuthForm";
-import { useLoginMutation } from "../../features/auth/api/auth.api";
-import { Screen } from "../../components/ui/Screen";
-import { AppText } from "../../components/ui/Text";
-import { Button } from "../../components/ui/Button";
-import { formatApiError } from "../../utils/format";
+import { DEMO_CREDENTIALS } from "@/constants/env";
+import { AuthForm } from "@/features/auth/components/AuthForm";
+import { useLoginMutation } from "@/features/auth/api/auth.api";
+import { Screen } from "@/components/ui/Screen";
+import { AppText } from "@/components/ui/Text";
+import { Button } from "@/components/ui/Button";
+import { formatApiError } from "@/utils/format";
 
 export default function LoginScreen() {
   const [login, { error, isLoading }] = useLoginMutation();

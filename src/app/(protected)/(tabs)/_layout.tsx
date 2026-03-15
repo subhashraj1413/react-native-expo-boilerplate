@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-import { useTheme } from "../../../hooks/useTheme";
+import { useTheme } from "@/hooks/useTheme";
 
 export default function ProtectedTabsLayout() {
   const { theme } = useTheme();

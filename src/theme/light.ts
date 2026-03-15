@@ -1,5 +1,3 @@
-import { palette } from "../constants/colors";
-
 export const lightTheme = {
   accent: "#D93C4E",
   accentBorder: "#F4C1C7",

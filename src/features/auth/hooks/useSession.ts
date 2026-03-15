@@ -1,5 +1,5 @@
-import { authActions, selectAuthState } from "../store/auth.store";
-import { useAppDispatch, useAppSelector } from "../../../lib/store";
+import { authActions, selectAuthState } from "@/features/auth/store/auth.store";
+import { useAppDispatch, useAppSelector } from "@/lib/store";
 
 export const useSession = () => {
   const dispatch = useAppDispatch();

@@ -1,9 +1,9 @@
 import { openDatabaseSync, type SQLiteDatabase } from "expo-sqlite";
-import { DEMO_CREDENTIALS } from "../../constants/env";
-import type { Session } from "../../features/auth/types/auth.types";
-import type { FeedItem } from "../../features/feed/types/feed.types";
-import type { UserProfile } from "../../features/user/types/user.types";
-import type { ThemeMode } from "../../types/global";
+import { DEMO_CREDENTIALS } from "@/constants/env";
+import type { Session } from "@/features/auth/types/auth.types";
+import type { FeedItem } from "@/features/feed/types/feed.types";
+import type { UserProfile } from "@/features/user/types/user.types";
+import type { ThemeMode } from "@/types/global";
 
 type UserRow = {
   bio: string;
@@ -68,9 +68,7 @@ const defaultUser: UserRow = {
 };
 
 const getDatabase = () => {
-  if (!database) {
-    database = openDatabaseSync(DATABASE_NAME);
-  }
+  database ??= openDatabaseSync(DATABASE_NAME);
 
   if (!initialized) {
     initializeDatabase(database);
@@ -284,7 +282,7 @@ export const sqliteUserRepository = {
       throw new Error("An account with this email already exists.");
     }
 
-    const id = `user-${Date.now()}`;
+    const id = `user-${String(Date.now())}`;
     const user: UserRow = {
       bio: `${input.fullName.trim()} joined the workspace and can now customize their profile data.`,
       email: normalizedEmail,
