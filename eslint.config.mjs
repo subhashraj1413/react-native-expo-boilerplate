@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-deprecated */
 import js from "@eslint/js"
 import prettierConfig from "eslint-config-prettier/flat"
 import jestPlugin from "eslint-plugin-jest"
@@ -45,7 +46,9 @@ const eslintConfig = config(
       ecmaVersion: 2020,
       globals: globals.node,
       parserOptions: {
-        projectService: true,
+        projectService: {
+          allowDefaultProject: ["babel.config.js", "metro.config.js"],
+        },
         tsconfigRootDir: import.meta.dirname,
       },
     },
@@ -59,7 +62,7 @@ const eslintConfig = config(
               name: "react-redux",
               importNames: ["useSelector", "useStore", "useDispatch"],
               message:
-                "Please use pre-typed versions from `src/app/hooks.ts` instead.",
+                "Please use pre-typed versions from `src/lib/store.ts` instead.",
             },
           ],
         },
@@ -77,15 +80,25 @@ const eslintConfig = config(
   },
   {
     name: "commonjs",
-    files: ["metro.config.js"],
+    files: ["babel.config.js", "metro.config.js", "tailwind.config.js"],
     languageOptions: {
       sourceType: "commonjs",
     },
     rules: {
+      "@typescript-eslint/no-unsafe-argument": 0,
+      "@typescript-eslint/no-unsafe-member-access": 0,
+      "@typescript-eslint/no-unsafe-return": 0,
       "@typescript-eslint/no-require-imports": [
         0,
         [{ allow: [], allowAsImport: false }],
       ],
+    },
+  },
+  {
+    name: "typed-store",
+    files: ["src/lib/store.ts"],
+    rules: {
+      "no-restricted-imports": 0,
     },
   },
 

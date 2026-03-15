@@ -1,12 +1,4 @@
-import "react-native-gesture-handler";
-import { AppRegistry } from "react-native";
-import { Provider } from "react-redux";
-import { App } from "./App";
-import { name as appName } from "./app.json";
-import { store } from "./src/app/store";
+process.env.EXPO_ROUTER_APP_ROOT = "./src/app";
 
-AppRegistry.registerComponent(appName, () => () => (
-  <Provider store={store}>
-    <App />
-  </Provider>
-));
+import "react-native-gesture-handler";
+import "expo-router/entry";

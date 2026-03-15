@@ -73,3 +73,8 @@ template/yarn.lock
 
 .yalc/
 yalc.lock
+
+# Expo
+.expo
+dist/
+web-build/

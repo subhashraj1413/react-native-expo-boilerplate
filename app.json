@@ -1,4 +1,22 @@
 {
-  "name": "ReactNativeReduxTemplate",
-  "displayName": "ReactNativeReduxTemplate"
+  "expo": {
+    "name": "Orbit Workspace",
+    "slug": "orbit-workspace",
+    "scheme": "orbitworkspace",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.ReactNativeReduxTemplate",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.ReactNativeReduxTemplate"
+    }
+  }
 }
