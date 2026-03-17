@@ -5,7 +5,7 @@ Production-style Expo Router starter with native iOS and Android folders, protec
 ## Demo
 
 <p align="center">
-  <video src="./assets/app-demo.mov" controls muted playsinline width="320">
+  <video src="https://github.com/subhashraj1413/react-native-expo-boilerplate/blob/master/assets/app-demo.mov" controls muted playsinline width="320">
     Your browser does not support the video tag.
   </video>
 </p>
