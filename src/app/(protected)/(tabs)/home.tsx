@@ -33,8 +33,8 @@ export default function HomeScreen() {
               Welcome back, {session?.user.name.split(" ")[0]}.
             </AppText>
             <AppText className="mt-4 max-w-[320px]" tone="muted" variant="body">
-              The home screen is now fully safe-area aware and sits inside the
-              protected tab group rather than a manual native stack config.
+              Home now sits inside the shared protected drawer, so tabs and
+              deeper routes can live under one signed-in shell.
             </AppText>
             <View className="mt-6 flex-row gap-3">
               <Link asChild href="/modal">

@@ -1,5 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
+import { DrawerToggleButton } from "@react-navigation/drawer";
 import { Tabs } from "expo-router";
+import { HeaderAiButton } from "@/components/navigation/HeaderAiButton";
 import { useTheme } from "@/hooks/useTheme";
 
 export default function ProtectedTabsLayout() {
@@ -8,7 +10,15 @@ export default function ProtectedTabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerShown: false,
+        headerLeft: props => (
+          <DrawerToggleButton {...props} tintColor={theme.primaryText} />
+        ),
+        headerRight: () => <HeaderAiButton />,
+        headerShadowVisible: false,
+        headerStyle: {
+          backgroundColor: theme.background,
+        },
+        headerTintColor: theme.primaryText,
         sceneStyle: { backgroundColor: theme.background },
         tabBarActiveTintColor: theme.accent,
         tabBarInactiveTintColor: theme.secondaryText,
@@ -32,6 +42,7 @@ export default function ProtectedTabsLayout() {
       <Tabs.Screen
         name="home"
         options={{
+          headerTitle: "Home",
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               color={color}
@@ -45,6 +56,7 @@ export default function ProtectedTabsLayout() {
       <Tabs.Screen
         name="search"
         options={{
+          headerTitle: "Search",
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               color={color}
@@ -58,6 +70,7 @@ export default function ProtectedTabsLayout() {
       <Tabs.Screen
         name="profile"
         options={{
+          headerTitle: "Profile",
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               color={color}

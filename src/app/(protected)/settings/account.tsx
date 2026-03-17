@@ -11,11 +11,11 @@ export default function AccountScreen() {
   const { session, signOut } = useSession();
 
   return (
-    <Screen backHref="/(protected)/settings" showBackButton>
+    <Screen>
       <View className="flex-1">
         <AppText variant="eyebrow">Account</AppText>
         <AppText className="mt-4" variant="title">
-          Account controls stay outside the tab bar.
+          Account controls live inside the shared protected drawer.
         </AppText>
         <AppText className="mt-4" tone="muted" variant="body">
           Signed in as {session?.user.email}

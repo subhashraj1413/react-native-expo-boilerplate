@@ -37,8 +37,8 @@ export default function ProfileScreen() {
               <Link asChild href="/modal">
                 <Button label="Open profile modal"  variant="secondary" />
               </Link>
-              <Link asChild href="/(protected)/settings/account">
-                <Button label="Account settings" variant="ghost" />
+              <Link asChild href="/(protected)/settings">
+                <Button label="Open settings drawer" variant="ghost" />
               </Link>
             </View>
           </Surface>
