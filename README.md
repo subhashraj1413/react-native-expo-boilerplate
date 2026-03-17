@@ -1,79 +1,141 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native Expo Boilerplate
 
-# Getting Started
+Production-style Expo Router starter with native iOS and Android folders, protected navigation, SQLite-backed demo data, global theming, and EN/AR localization.
 
-> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Demo
 
-## Step 1: Start the Metro Server
+App walkthrough video: [assets/app-demo.mov](./assets/app-demo.mov)
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+- Format: `.mov`
+- Duration: ~35 seconds
+- Resolution: `1206x2622`
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## What is included
+
+- Expo SDK 55 with Expo Router route groups for `public`, `auth`, `protected`, `settings`, and `modal`
+- Protected drawer shell with nested tabs for `Home`, `Search`, and `Profile`
+- AI assistant screen with in-app navigation prompts
+- Redux Toolkit store with RTK Query and saga orchestration
+- SQLite persistence for users, feed items, session, theme, and language
+- Global light/dark theme toggle
+- `react-i18next` + `expo-localization` setup with modular EN/AR resources
+- NativeWind-powered shared UI primitives
+
+## Demo credentials
+
+Use the seeded account from the app:
+
+- Email: `maya@orbitops.app`
+- Password: `orbit-55`
+
+The seeded user and feed data are defined in [`src/lib/storage/sqlite.ts`](./src/lib/storage/sqlite.ts) and [`src/constants/env.ts`](./src/constants/env.ts).
+
+## Tech stack
+
+- Expo / React Native / React 19
+- Expo Router
+- Redux Toolkit, RTK Query, Redux Saga
+- Expo SQLite
+- react-i18next, i18next, expo-localization
+- NativeWind
+- TypeScript, ESLint, Prettier, Jest
+
+## Project structure
+
+```text
+src/
+  app/
+    (public)/landing.tsx
+    (auth)/login.tsx
+    (auth)/register.tsx
+    (auth)/forgot-password.tsx
+    (protected)/(tabs)/home.tsx
+    (protected)/(tabs)/search.tsx
+    (protected)/(tabs)/profile.tsx
+    (protected)/settings/index.tsx
+    (protected)/settings/account.tsx
+    (protected)/ai.tsx
+    modal.tsx
+  components/
+  features/
+    auth/
+    feed/
+    user/
+    ai/
+  hooks/
+  lib/
+    api/
+    query/
+    storage/
+  localization/
+    i18n.ts
+    resources/
+      en/
+      ar/
+  providers/
+  theme/
+```
+
+## Getting started
+
+### Prerequisites
+
+- Node.js `>=18`
+- Xcode for iOS
+- Android Studio and Android SDK for Android
+- CocoaPods for iOS native dependencies
+
+### Install dependencies
 
 ```bash
-# using npm
-npm start
+yarn install
+```
 
-# OR using Yarn
+### Start Metro
+
+```bash
 yarn start
 ```
 
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
+### Run iOS
 
 ```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
 yarn ios
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+### Run Android
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+```bash
+yarn android
+```
 
-## Step 3: Modifying your App
+## Useful commands
 
-Now that you have successfully run the app, let's modify it.
+```bash
+yarn start
+yarn ios
+yarn android
+yarn prebuild
+yarn type-check
+yarn lint
+yarn test
+```
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+## Localization
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+Localization is initialized in [`src/localization/i18n.ts`](./src/localization/i18n.ts). Translation resources are split by language and namespace under [`src/localization/resources`](./src/localization/resources), and the UI consumes translations through [`src/hooks/useAppTranslation.ts`](./src/hooks/useAppTranslation.ts).
 
-## Congratulations! :tada:
+## Persistence
 
-You've successfully run and modified your React Native App. :partying_face:
+SQLite is used for seeded demo content and app settings:
 
-### Now what?
+- `users`
+- `feed_items`
+- `app_settings`
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+That storage layer lives in [`src/lib/storage/sqlite.ts`](./src/lib/storage/sqlite.ts).
 
-# Troubleshooting
+## Notes
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- This repo contains native folders under `ios/` and `android/`, so after adding native Expo modules you should rebuild the native app.
+- The app currently ships with a portrait-only orientation and Expo new architecture enabled in [`app.json`](./app.json).

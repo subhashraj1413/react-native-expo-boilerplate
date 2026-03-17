@@ -2,14 +2,12 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Link } from "expo-router";
 import { Pressable, View } from "react-native";
 import { Screen } from "@/components/ui/Screen";
-import { Surface } from "@/components/ui/Surface";
 import { AppText } from "@/components/ui/Text";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useTheme } from "@/hooks/useTheme";
-import { useNetwork } from "@/hooks/useNetwork";
 
 export default function LandingScreen() {
-  const network = useNetwork();
+
   const { t } = useLanguage(["auth", "common", "landing"]);
   const { theme } = useTheme();
 
@@ -37,17 +35,7 @@ export default function LandingScreen() {
         </View>
 
         <View className="gap-4 pb-10">
-          <Surface className="rounded-[28px] p-6">
-            <AppText variant="subtitle">{t("environment", { ns: "landing" })}</AppText>
-            <AppText className="mt-3" tone="muted" variant="body">
-              {t("status", {
-                ns: "landing",
-                status: network.isConnected
-                  ? t("online", { ns: "common" })
-                  : t("offline", { ns: "common" }),
-              })}
-            </AppText>
-          </Surface>
+          
 
           <Link asChild href="/(auth)/login">
             <Pressable
