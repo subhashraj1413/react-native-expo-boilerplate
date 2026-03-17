@@ -4,7 +4,13 @@ Production-style Expo Router starter with native iOS and Android folders, protec
 
 ## Demo
 
-App walkthrough video: [assets/app-demo.mov](./assets/app-demo.mov)
+<p align="center">
+  <video src="./assets/app-demo.mov" controls muted playsinline width="320">
+    Your browser does not support the video tag.
+  </video>
+</p>
+
+Direct video file: [assets/app-demo.mov](./assets/app-demo.mov)
 
 - Format: `.mov`
 - Duration: ~35 seconds
