@@ -3,18 +3,10 @@
 Production-style Expo Router starter with native iOS and Android folders, protected navigation, SQLite-backed demo data, global theming, and EN/AR localization.
 
 ## Demo
+[![Video Title](https://img.youtube.com)](https://github.com/subhashraj1413/react-native-expo-boilerplate/blob/master/assets/app-demo.mov)
 
-<p align="center">
-  <video src="https://github.com/subhashraj1413/react-native-expo-boilerplate/blob/master/assets/app-demo.mov" controls muted playsinline width="320">
-    Your browser does not support the video tag.
-  </video>
-</p>
 
-Direct video file: [assets/app-demo.mov](./assets/app-demo.mov)
 
-- Format: `.mov`
-- Duration: ~35 seconds
-- Resolution: `1206x2622`
 
 ## What is included
 
