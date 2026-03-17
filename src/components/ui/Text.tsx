@@ -1,6 +1,7 @@
 import type { PropsWithChildren } from "react";
 import type { StyleProp, TextStyle } from "react-native";
 import { Text as RNText } from "react-native";
+import { useLanguage } from "@/hooks/useLanguage";
 import { useTheme } from "@/hooks/useTheme";
 
 type AppTextProps = PropsWithChildren<{
@@ -26,6 +27,7 @@ export const AppText = ({
   variant = "body",
 }: AppTextProps) => {
   const { theme } = useTheme();
+  const { isRTL } = useLanguage();
 
   const toneStyles = {
     accent: { color: theme.accent },
@@ -37,7 +39,14 @@ export const AppText = ({
   return (
     <RNText
       className={`${variantClasses[variant]} ${className}`}
-      style={[toneStyles[tone], style]}
+      style={[
+        toneStyles[tone],
+        {
+          textAlign: isRTL ? "right" : "left",
+          writingDirection: isRTL ? "rtl" : "ltr",
+        },
+        style,
+      ]}
     >
       {children}
     </RNText>

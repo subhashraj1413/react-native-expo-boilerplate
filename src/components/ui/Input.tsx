@@ -1,5 +1,6 @@
 import type { TextInputProps } from "react-native";
 import { TextInput, View } from "react-native";
+import { useLanguage } from "@/hooks/useLanguage";
 import { useTheme } from "@/hooks/useTheme";
 import { AppText } from "@/components/ui/Text";
 
@@ -9,6 +10,7 @@ type InputProps = TextInputProps & {
 
 export const Input = ({ label, ...props }: InputProps) => {
   const { theme } = useTheme();
+  const { isRTL } = useLanguage();
 
   return (
     <View>
@@ -23,6 +25,8 @@ export const Input = ({ label, ...props }: InputProps) => {
           borderColor: theme.border,
           borderWidth: 1,
           color: theme.primaryText,
+          textAlign: isRTL ? "right" : "left",
+          writingDirection: isRTL ? "rtl" : "ltr",
         }}
         {...props}
       />

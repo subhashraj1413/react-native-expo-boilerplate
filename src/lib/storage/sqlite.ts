@@ -3,7 +3,7 @@ import { DEMO_CREDENTIALS } from "@/constants/env";
 import type { Session } from "@/features/auth/types/auth.types";
 import type { FeedItem } from "@/features/feed/types/feed.types";
 import type { UserProfile } from "@/features/user/types/user.types";
-import type { ThemeMode } from "@/types/global";
+import type { AppLanguage, ThemeMode } from "@/types/global";
 
 type UserRow = {
   bio: string;
@@ -24,6 +24,7 @@ type FeedRow = {
 };
 
 const DATABASE_NAME = "react-native-expo-boilerplate.db";
+const LANGUAGE_KEY = "language";
 const SESSION_KEY = "session";
 const THEME_KEY = "theme";
 
@@ -257,8 +258,20 @@ export const sqliteStorage = {
 
     return null;
   },
+  readLanguage(): AppLanguage | null {
+    const stored = readSetting(LANGUAGE_KEY);
+
+    if (stored === "ar" || stored === "en") {
+      return stored;
+    }
+
+    return null;
+  },
   writeSession(session: Session) {
     writeSetting(SESSION_KEY, JSON.stringify(session));
+  },
+  writeLanguage(language: AppLanguage) {
+    writeSetting(LANGUAGE_KEY, language);
   },
   writeTheme(mode: ThemeMode) {
     writeSetting(THEME_KEY, mode);

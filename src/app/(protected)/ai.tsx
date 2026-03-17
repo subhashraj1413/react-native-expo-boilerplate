@@ -16,6 +16,7 @@ import {
   getAssistantReply,
   type ChatAction,
 } from "@/features/ai/lib/chatbot";
+import { useLanguage } from "@/hooks/useLanguage";
 import { useTheme } from "@/hooks/useTheme";
 
 type Message = {
@@ -25,25 +26,20 @@ type Message = {
   text: string;
 };
 
-const quickPrompts = [
-  "Open settings",
-  "Where is account?",
-  "Take me to search",
-  "How do I change theme?",
-] as const;
-
 export default function AiScreen() {
   const router = useRouter();
   const { session } = useSession();
+  const { isRTL, language, t } = useLanguage(["ai", "common"]);
   const { theme } = useTheme();
   const scrollRef = useRef<ScrollView>(null);
-  const firstName = session?.user.name.split(" ")[0] ?? "there";
+  const firstName = session?.user.name.split(" ")[0] ?? t("fallbackName", { ns: "ai" });
+  const quickPrompts = t("quickPrompts", { ns: "ai", returnObjects: true }) as string[];
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
       role: "assistant",
-      text: `Hi ${firstName}. Ask about navigation, settings, profile, account, theme, or search.`,
+      text: t("greeting", { name: firstName, ns: "ai" }),
     },
   ]);
 
@@ -69,7 +65,7 @@ export default function AiScreen() {
       role: "user",
       text: value,
     };
-    const reply = getAssistantReply(value, session?.user.name);
+    const reply = getAssistantReply(t, value, language, session?.user.name);
     const assistantMessage: Message = {
       actions: reply.actions,
       id: `assistant-${String(Date.now())}`,
@@ -94,12 +90,12 @@ export default function AiScreen() {
           showsVerticalScrollIndicator={false}
         >
           <View className="mb-5">
-            <AppText variant="eyebrow">AI Assistant</AppText>
+            <AppText variant="eyebrow">{t("screenTitle", { ns: "ai" })}</AppText>
             <AppText className="mt-3" variant="title">
-              In-app guide and quick navigation
+              {t("quickNavigationTitle", { ns: "ai" })}
             </AppText>
             <AppText className="mt-3 max-w-[330px]" tone="muted" variant="body">
-              Use the assistant to understand the protected flow and jump into the right screen quickly.
+              {t("quickNavigationSubtitle", { ns: "ai" })}
             </AppText>
           </View>
 
@@ -144,7 +140,9 @@ export default function AiScreen() {
                         <Ionicons color={theme.accent} name="sparkles-outline" size={16} />
                       ) : null}
                       <AppText tone="muted" variant="caption">
-                        {isAssistant ? "Assistant" : "You"}
+                        {isAssistant
+                          ? t("assistant", { ns: "ai" })
+                          : t("user", { ns: "ai" })}
                       </AppText>
                     </View>
                     <AppText className="mt-2" variant="body">
@@ -187,7 +185,7 @@ export default function AiScreen() {
           <TextInput
             multiline
             onChangeText={setInput}
-            placeholder="Ask about settings, account, search, theme..."
+            placeholder={t("placeholder", { ns: "ai" })}
             placeholderTextColor={theme.placeholder}
             style={{
               color: theme.primaryText,
@@ -195,7 +193,9 @@ export default function AiScreen() {
               minHeight: 48,
               paddingHorizontal: 12,
               paddingVertical: 10,
+              textAlign: isRTL ? "right" : "left",
               textAlignVertical: "top",
+              writingDirection: isRTL ? "rtl" : "ltr",
             }}
             value={input}
           />
@@ -214,7 +214,7 @@ export default function AiScreen() {
                 style={{ color: input.trim() ? theme.onAccent : theme.primaryText }}
                 variant="body"
               >
-                Send
+                {t("send", { ns: "ai" })}
               </AppText>
               <Ionicons
                 color={input.trim() ? theme.onAccent : theme.primaryText}

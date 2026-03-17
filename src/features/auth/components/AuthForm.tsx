@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/Input";
 import { Surface } from "@/components/ui/Surface";
 import { AppText } from "@/components/ui/Text";
 import { ErrorView } from "@/components/feedback/ErrorView";
+import { useLanguage } from "@/hooks/useLanguage";
 
 export type AuthField = {
   autoCapitalize?: "characters" | "none" | "sentences" | "words";
@@ -40,6 +41,7 @@ export const AuthForm = ({
   subtitle,
   title,
 }: AuthFormProps) => {
+  const { t } = useLanguage(["auth", "common"]);
   const [values, setValues] = useState<Record<string, string>>(() =>
     fields.reduce<Record<string, string>>((result, field) => {
       result[field.name] = initialValues[field.name] ?? "";
@@ -49,7 +51,7 @@ export const AuthForm = ({
 
   return (
     <Surface className="rounded-[30px] p-6">
-      <AppText variant="eyebrow">Auth flow</AppText>
+      <AppText variant="eyebrow">{t("flow", { ns: "auth" })}</AppText>
       <AppText className="mt-3" variant="title">
         {title}
       </AppText>
@@ -85,7 +87,7 @@ export const AuthForm = ({
 
       <View className="mt-6 gap-4">
         <Button
-          label={isLoading ? "Working..." : ctaLabel}
+          label={isLoading ? t("working", { ns: "common" }) : ctaLabel}
           onPress={() => {
             onSubmit(values);
           }}

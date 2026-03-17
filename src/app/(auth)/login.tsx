@@ -7,31 +7,34 @@ import { useLoginMutation } from "@/features/auth/api/auth.api";
 import { Screen } from "@/components/ui/Screen";
 import { AppText } from "@/components/ui/Text";
 import { Button } from "@/components/ui/Button";
+import { useLanguage } from "@/hooks/useLanguage";
 import { formatApiError } from "@/utils/format";
 
 export default function LoginScreen() {
   const [login, { error, isLoading }] = useLoginMutation();
+  const { t } = useLanguage("auth");
+  const signInFallback = t("signInUnable");
 
   const errorMessage = useMemo(
-    () => formatApiError(error, "Unable to sign in."),
-    [error],
+    () => formatApiError(error, signInFallback),
+    [error, signInFallback],
   );
 
   return (
     <Screen backHref="/(public)/landing" showBackButton>
       <ScrollView showsVerticalScrollIndicator={false}>
         <AuthForm
-          ctaLabel="Login"
+          ctaLabel={t("login")}
           errorMessage={error ? errorMessage : null}
           fields={[
             {
               keyboardType: "email-address",
-              label: "Email",
+              label: t("email"),
               name: "email",
               placeholder: "maya@orbitops.app",
             },
             {
-              label: "Password",
+              label: t("password"),
               name: "password",
               placeholder: "orbit-55",
               secureTextEntry: true,
@@ -40,13 +43,16 @@ export default function LoginScreen() {
           footer={
             <View className="gap-3">
               <AppText tone="muted" variant="caption">
-                Demo: {DEMO_CREDENTIALS.email} / {DEMO_CREDENTIALS.password}
+                {t("demo", {
+                  email: DEMO_CREDENTIALS.email,
+                  password: DEMO_CREDENTIALS.password,
+                })}
               </AppText>
               <Link asChild href="/(auth)/forgot-password">
-                <Button label="Forgot password" variant="secondary" />
+                <Button label={t("forgotPassword")} variant="secondary" />
               </Link>
               <Link asChild href="/(auth)/register">
-                <Button label="Create account" variant="ghost" />
+                <Button label={t("createAccount")} variant="ghost" />
               </Link>
             </View>
           }
@@ -61,8 +67,8 @@ export default function LoginScreen() {
               password: values.password,
             });
           }}
-          subtitle="This screen stays narrow in responsibility: collect credentials, run the mutation, and let the surrounding providers handle the session."
-          title="Welcome back"
+          subtitle={t("loginSubtitle")}
+          title={t("loginTitle")}
         />
       </ScrollView>
     </Screen>

@@ -6,15 +6,18 @@ import { useForgotPasswordMutation } from "@/features/auth/api/auth.api";
 import { Screen } from "@/components/ui/Screen";
 import { Button } from "@/components/ui/Button";
 import { AppText } from "@/components/ui/Text";
+import { useLanguage } from "@/hooks/useLanguage";
 import { formatApiError } from "@/utils/format";
 
 export default function ForgotPasswordScreen() {
   const [forgotPassword, { error, isLoading }] = useForgotPasswordMutation();
   const [successMessage, setSuccessMessage] = useState("");
+  const { t } = useLanguage("auth");
+  const forgotFallback = t("forgotUnable");
 
   const errorMessage = useMemo(
-    () => formatApiError(error, "Unable to send reset email."),
-    [error],
+    () => formatApiError(error, forgotFallback),
+    [error, forgotFallback],
   );
 
   return (
@@ -22,12 +25,12 @@ export default function ForgotPasswordScreen() {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View className="pb-10">
           <AuthForm
-            ctaLabel="Send reset link"
+            ctaLabel={t("resetLink")}
             errorMessage={error ? errorMessage : null}
             fields={[
               {
                 keyboardType: "email-address",
-                label: "Email",
+                label: t("email"),
                 name: "email",
                 placeholder: "maya@orbitops.app",
               },
@@ -40,7 +43,7 @@ export default function ForgotPasswordScreen() {
                   </AppText>
                 ) : null}
                 <Link asChild href="/(auth)/login">
-                  <Button label="Back to login" variant="secondary" />
+                  <Button label={t("backToLogin")} variant="secondary" />
                 </Link>
               </View>
             }
@@ -50,13 +53,13 @@ export default function ForgotPasswordScreen() {
                 email: values.email,
               })
                 .unwrap()
-                .then((result) => {
-                  setSuccessMessage(result.message);
+                .then(() => {
+                  setSuccessMessage(t("successReset"));
                 })
                 .catch(() => undefined);
             }}
-            subtitle="Side routes like password recovery now have a dedicated file instead of being conditionally rendered inside a login screen."
-            title="Reset your password"
+            subtitle={t("forgotSubtitle")}
+            title={t("forgotTitle")}
           />
         </View>
       </ScrollView>

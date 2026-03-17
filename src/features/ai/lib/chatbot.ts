@@ -1,4 +1,6 @@
 import type { Href } from "expo-router";
+import type { TFunction } from "i18next";
+import type { AppLanguage } from "@/types/global";
 
 export type ChatAction = {
   href: Href;
@@ -12,83 +14,91 @@ export type ChatReply = {
 
 const normalize = (value: string) => value.trim().toLowerCase();
 
-export const getAssistantReply = (input: string, userName?: string): ChatReply => {
+const containsAny = (prompt: string, terms: string[]) =>
+  terms.some((term) => prompt.includes(term));
+
+export const getAssistantReply = (
+  t: TFunction,
+  input: string,
+  language: AppLanguage,
+  userName?: string,
+): ChatReply => {
   const prompt = normalize(input);
-  const firstName = userName?.split(" ")[0] ?? "there";
+  const firstName = userName?.split(" ")[0] ?? t("fallbackName", { ns: "ai" });
 
   if (!prompt) {
     return {
-      text: "Ask me about navigation, settings, profile, search, feed, or account actions.",
+      text: t("emptyPrompt", { ns: "ai" }),
     };
   }
 
-  if (prompt.includes("home") || prompt.includes("feed") || prompt.includes("dashboard")) {
+  if (containsAny(prompt, ["home", "feed", "dashboard", "الرئيس", "الخلاصة"])) {
     return {
-      actions: [{ href: "/(protected)/(tabs)/home", label: "Open home" }],
-      text: "Home is the main workspace screen. It shows the feed cards and the primary signed-in overview.",
+      actions: [{ href: "/(protected)/(tabs)/home", label: t("openHome", { ns: "ai" }) }],
+      text: t("chatbot.homeText", { ns: "ai" }),
     };
   }
 
-  if (prompt.includes("search") || prompt.includes("find")) {
+  if (containsAny(prompt, ["search", "find", "بحث"])) {
     return {
-      actions: [{ href: "/(protected)/(tabs)/search", label: "Open search" }],
-      text: "Search lives in the protected tab group. Use it for discovery flows without leaving the main workspace.",
+      actions: [{ href: "/(protected)/(tabs)/search", label: t("openSearch", { ns: "ai" }) }],
+      text: t("chatbot.searchText", { ns: "ai" }),
     };
   }
 
-  if (prompt.includes("profile") || prompt.includes("user")) {
+  if (containsAny(prompt, ["profile", "user", "الملف", "شخصي"])) {
     return {
-      actions: [{ href: "/(protected)/(tabs)/profile", label: "Open profile" }],
-      text: "Profile holds your identity view and theme toggle. It is the best place for quick personal preferences.",
+      actions: [{ href: "/(protected)/(tabs)/profile", label: t("openProfile", { ns: "ai" }) }],
+      text: t("chatbot.profileText", { ns: "ai" }),
     };
   }
 
-  if (prompt.includes("theme") || prompt.includes("dark") || prompt.includes("light")) {
+  if (containsAny(prompt, ["theme", "dark", "light", "المظهر", "داكن", "فاتح"])) {
     return {
-      actions: [{ href: "/(protected)/(tabs)/profile", label: "Go to theme toggle" }],
-      text: "Theme switching is currently exposed from the Profile tab. Open profile and use the Toggle theme action there.",
+      actions: [{ href: "/(protected)/(tabs)/home", label: t("openDrawerMenu", { ns: "ai" }) }],
+      text: t("chatbot.themeText", { ns: "ai" }),
     };
   }
 
-  if (prompt.includes("setting") || prompt.includes("preferences")) {
+  if (containsAny(prompt, ["setting", "preferences", "الإعداد", "تفضيل"])) {
     return {
-      actions: [{ href: "/(protected)/settings", label: "Open settings" }],
-      text: "Settings is part of the protected drawer and contains the overview plus deeper account-related routes.",
+      actions: [{ href: "/(protected)/settings", label: t("openSettings", { ns: "ai" }) }],
+      text: t("chatbot.settingsText", { ns: "ai" }),
     };
   }
 
-  if (prompt.includes("account") || prompt.includes("password") || prompt.includes("email")) {
+  if (containsAny(prompt, ["account", "password", "email", "الحساب", "البريد", "كلمة"])) {
     return {
-      actions: [{ href: "/(protected)/settings/account", label: "Open account" }],
-      text: "Account is where signed-in identity details and sign-out controls currently live.",
+      actions: [{ href: "/(protected)/settings/account", label: t("openAccount", { ns: "ai" }) }],
+      text: t("chatbot.accountText", { ns: "ai" }),
     };
   }
 
-  if (prompt.includes("logout") || prompt.includes("log out") || prompt.includes("sign out")) {
+  if (containsAny(prompt, ["logout", "log out", "sign out", "تسجيل الخروج", "الخروج"])) {
     return {
-      actions: [{ href: "/(protected)/settings/account", label: "Open sign out screen" }],
-      text: "The sign-out action is available from the account screen and in the protected drawer footer.",
+      actions: [{ href: "/(protected)/settings/account", label: t("openSignOut", { ns: "ai" }) }],
+      text: t("chatbot.signOutText", { ns: "ai" }),
     };
   }
 
-  if (prompt.includes("drawer") || prompt.includes("menu") || prompt.includes("navigation")) {
+  if (containsAny(prompt, ["drawer", "menu", "navigation", "القائمة", "الدرج", "التنقل"])) {
     return {
-      actions: [{ href: "/(protected)/(tabs)/home", label: "Back to workspace" }],
-      text: "The protected area uses a shared drawer. Tabs stay inside the workspace screen group, while settings and account stay available from the same menu shell.",
+      actions: [{ href: "/(protected)/(tabs)/home", label: t("backToWorkspace", { ns: "ai" }) }],
+      text: t("chatbot.drawerText", { ns: "ai" }),
     };
   }
 
-  if (prompt.includes("hello") || prompt.includes("hi")) {
+  if (containsAny(prompt, ["hello", "hi", "مرحبا", "مرحباً", "اهلا"])) {
     return {
-      text: `Hi ${firstName}. I can help you navigate the app and jump to the right protected screen.`,
+      text: t("chatbot.greetingReply", { name: firstName, ns: "ai" }),
     };
   }
 
   return {
     actions: [
-      { href: "/(protected)/(tabs)/home", label: "Workspace" },
-      { href: "/(protected)/settings", label: "Settings" },
+      { href: "/(protected)/(tabs)/home", label: t("workspace", { ns: "common" }) },
+      { href: "/(protected)/settings", label: t("settings", { ns: "common" }) },
     ],
-    text: "I can help with app navigation and common actions. Try asking about home, search, profile, settings, account, theme, or sign out.",
+    text: t("chatbot.fallbackText", { ns: "ai" }),
   };
 };

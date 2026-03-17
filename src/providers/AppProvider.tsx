@@ -4,6 +4,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { store } from "@/lib/store";
 import { AuthProvider } from "@/providers/AuthProvider";
+import { LocalizationProvider } from "@/providers/LocalizationProvider";
 import { QueryProvider } from "@/providers/QueryProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 
@@ -12,11 +13,13 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Provider store={store}>
         <SafeAreaProvider>
-          <ThemeProvider>
-            <QueryProvider>
-              <AuthProvider>{children}</AuthProvider>
-            </QueryProvider>
-          </ThemeProvider>
+          <LocalizationProvider>
+            <ThemeProvider>
+              <QueryProvider>
+                <AuthProvider>{children}</AuthProvider>
+              </QueryProvider>
+            </ThemeProvider>
+          </LocalizationProvider>
         </SafeAreaProvider>
       </Provider>
     </GestureHandlerRootView>

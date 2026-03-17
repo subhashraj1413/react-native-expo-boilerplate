@@ -1,5 +1,5 @@
 import type { Session } from "@/features/auth/types/auth.types";
-import type { ThemeMode } from "@/types/global";
+import type { AppLanguage, ThemeMode } from "@/types/global";
 import { sqliteStorage } from "@/lib/storage/sqlite";
 
 export const sessionStorage = {
@@ -23,5 +23,14 @@ export const themeStorage = {
   },
   write(mode: ThemeMode) {
     sqliteStorage.writeTheme(mode);
+  },
+};
+
+export const languageStorage = {
+  read(): AppLanguage | null {
+    return sqliteStorage.readLanguage();
+  },
+  write(language: AppLanguage) {
+    sqliteStorage.writeLanguage(language);
   },
 };

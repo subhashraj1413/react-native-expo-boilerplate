@@ -5,14 +5,17 @@ import { useRegisterMutation } from "@/features/auth/api/auth.api";
 import { AuthForm } from "@/features/auth/components/AuthForm";
 import { Screen } from "@/components/ui/Screen";
 import { Button } from "@/components/ui/Button";
+import { useLanguage } from "@/hooks/useLanguage";
 import { formatApiError } from "@/utils/format";
 
 export default function RegisterScreen() {
   const [register, { error, isLoading }] = useRegisterMutation();
+  const { t } = useLanguage("auth");
+  const registerFallback = t("registerUnable");
 
   const errorMessage = useMemo(
-    () => formatApiError(error, "Unable to register."),
-    [error],
+    () => formatApiError(error, registerFallback),
+    [error, registerFallback],
   );
 
   return (
@@ -20,23 +23,23 @@ export default function RegisterScreen() {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View className="pb-10">
           <AuthForm
-            ctaLabel="Create workspace"
+            ctaLabel={t("createWorkspace")}
             errorMessage={error ? errorMessage : null}
             fields={[
               {
                 autoCapitalize: "words",
-                label: "Full name",
+                label: t("fullName"),
                 name: "fullName",
                 placeholder: "Maya Chen",
               },
               {
                 keyboardType: "email-address",
-                label: "Email",
+                label: t("email"),
                 name: "email",
                 placeholder: "maya@orbitops.app",
               },
               {
-                label: "Password",
+                label: t("password"),
                 name: "password",
                 placeholder: "Minimum 6 characters",
                 secureTextEntry: true,
@@ -44,7 +47,7 @@ export default function RegisterScreen() {
             ]}
             footer={
               <Link asChild href="/(auth)/login">
-                <Button label="Back to login" variant="secondary" />
+                <Button label={t("backToLogin")} variant="secondary" />
               </Link>
             }
             isLoading={isLoading}
@@ -55,8 +58,8 @@ export default function RegisterScreen() {
                 password: values.password,
               });
             }}
-            subtitle="Registration lives in the auth module as a sibling route, not inside one giant screen component."
-            title="Create a new account"
+            subtitle={t("registerSubtitle")}
+            title={t("registerTitle")}
           />
         </View>
       </ScrollView>

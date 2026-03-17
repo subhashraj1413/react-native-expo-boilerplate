@@ -5,6 +5,7 @@ export type ApiError = {
 
 export type AsyncStatus = "error" | "idle" | "loading" | "success";
 
+export type AppLanguage = "ar" | "en";
 export type ThemeMode = "dark" | "light";
 
 export type ThemeTokens = {

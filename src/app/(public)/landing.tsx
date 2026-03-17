@@ -4,11 +4,13 @@ import { Pressable, View } from "react-native";
 import { Screen } from "@/components/ui/Screen";
 import { Surface } from "@/components/ui/Surface";
 import { AppText } from "@/components/ui/Text";
+import { useLanguage } from "@/hooks/useLanguage";
 import { useTheme } from "@/hooks/useTheme";
 import { useNetwork } from "@/hooks/useNetwork";
 
 export default function LandingScreen() {
   const network = useNetwork();
+  const { t } = useLanguage(["auth", "common", "landing"]);
   const { theme } = useTheme();
 
   return (
@@ -24,22 +26,26 @@ export default function LandingScreen() {
             start={{ x: 0, y: 0 }}
             style={{ padding: 28 }}
           >
-            <AppText variant="eyebrow">Public landing</AppText>
+            <AppText variant="eyebrow">{t("eyebrow", { ns: "landing" })}</AppText>
             <AppText className="mt-4 max-w-[280px]" variant="title">
-              Scaled Expo structure, not a template mashup.
+              {t("title", { ns: "landing" })}
             </AppText>
             <AppText className="mt-4 max-w-[320px]" tone="muted" variant="body">
-              Public, auth, protected, modal, providers, feature APIs, theming,
-              and shared UI are now split into purpose-built folders.
+              {t("body", { ns: "landing" })}
             </AppText>
           </LinearGradient>
         </View>
 
         <View className="gap-4 pb-10">
           <Surface className="rounded-[28px] p-6">
-            <AppText variant="subtitle">Environment</AppText>
+            <AppText variant="subtitle">{t("environment", { ns: "landing" })}</AppText>
             <AppText className="mt-3" tone="muted" variant="body">
-              Connectivity status: {network.isConnected ? "online" : "offline"}
+              {t("status", {
+                ns: "landing",
+                status: network.isConnected
+                  ? t("online", { ns: "common" })
+                  : t("offline", { ns: "common" }),
+              })}
             </AppText>
           </Surface>
 
@@ -62,13 +68,13 @@ export default function LandingScreen() {
                 <View className="flex-row items-center justify-between">
                   <View>
                     <AppText style={{ color: theme.onAccent }} variant="subtitle">
-                      Login
+                      {t("login", { ns: "auth" })}
                     </AppText>
                     <AppText
                       style={{ color: theme.onAccent, opacity: 0.8 }}
                       variant="caption"
                     >
-                      Enter the workspace
+                      {t("enterWorkspace", { ns: "landing" })}
                     </AppText>
                   </View>
                   <View
@@ -99,9 +105,9 @@ export default function LandingScreen() {
             >
               <View className="flex-row items-center justify-between">
                 <View>
-                  <AppText variant="subtitle">Register</AppText>
+                  <AppText variant="subtitle">{t("register", { ns: "landing" })}</AppText>
                   <AppText className="mt-1" tone="muted" variant="caption">
-                    Create a fresh account
+                    {t("registerSubtitle", { ns: "landing" })}
                   </AppText>
                 </View>
                 <View
@@ -109,7 +115,7 @@ export default function LandingScreen() {
                   style={{ backgroundColor: theme.accentSoft }}
                 >
                   <AppText tone="accent" variant="caption">
-                    New
+                    {t("new", { ns: "common" })}
                   </AppText>
                 </View>
               </View>
