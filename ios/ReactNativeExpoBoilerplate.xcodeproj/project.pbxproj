@@ -10,6 +10,8 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		1FF70BEE7982F719077BE786 /* libPods-ReactNativeExpoBoilerplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE088565C3AAFCE16CB2255 /* libPods-ReactNativeExpoBoilerplate.a */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
+		5BB886F02F75775E009FE7BF /* NativeSdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB886EF2F75775D009FE7BF /* NativeSdk.swift */; };
+		A11E5D5E2F1A000100000001 /* NativeSdk.m in Sources */ = {isa = PBXBuildFile; fileRef = A11E5D5E2F1A000100000002 /* NativeSdk.m */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 		DFD88D818271FAAE883E4A0E /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF1DE4F45D0490D1C4E8FF4 /* ExpoModulesProvider.swift */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
@@ -17,12 +19,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		05B391CD5F317C3F3A5ABEF9 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = ReactNativeExpoBoilerplate/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		05B391CD5F317C3F3A5ABEF9 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = ReactNativeExpoBoilerplate/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		0FE088565C3AAFCE16CB2255 /* libPods-ReactNativeExpoBoilerplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactNativeExpoBoilerplate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* ReactNativeExpoBoilerplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactNativeExpoBoilerplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ReactNativeExpoBoilerplate/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ReactNativeExpoBoilerplate/Info.plist; sourceTree = "<group>"; };
+		5BB886EF2F75775D009FE7BF /* NativeSdk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeSdk.swift; sourceTree = "<group>"; };
 		64837EDC472A1653FA377224 /* Pods-ReactNativeExpoBoilerplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeExpoBoilerplate.release.xcconfig"; path = "Target Support Files/Pods-ReactNativeExpoBoilerplate/Pods-ReactNativeExpoBoilerplate.release.xcconfig"; sourceTree = "<group>"; };
+		A11E5D5E2F1A000100000002 /* NativeSdk.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NativeSdk.m; path = ReactNativeExpoBoilerplate/NativeSdk.m; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = ReactNativeExpoBoilerplate/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		CFF1DE4F45D0490D1C4E8FF4 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-ReactNativeExpoBoilerplate/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
@@ -48,12 +52,14 @@
 			isa = PBXGroup;
 			children = (
 				F11748412D0307B40044C1D9 /* AppDelegate.swift */,
+				A11E5D5E2F1A000100000002 /* NativeSdk.m */,
 				F11748442D0722820044C1D9 /* ReactNativeExpoBoilerplate-Bridging-Header.h */,
 				BB2F792B24A3F905000567C9 /* Supporting */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
 				05B391CD5F317C3F3A5ABEF9 /* PrivacyInfo.xcprivacy */,
+				5BB886EF2F75775D009FE7BF /* NativeSdk.swift */,
 			);
 			name = ReactNativeExpoBoilerplate;
 			sourceTree = "<group>";
@@ -89,7 +95,6 @@
 				F28F715C0A63A54411C039C6 /* Pods-ReactNativeExpoBoilerplate.debug.xcconfig */,
 				64837EDC472A1653FA377224 /* Pods-ReactNativeExpoBoilerplate.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -326,7 +331,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
+				A11E5D5E2F1A000100000001 /* NativeSdk.m in Sources */,
 				DFD88D818271FAAE883E4A0E /* ExpoModulesProvider.swift in Sources */,
+				5BB886F02F75775E009FE7BF /* NativeSdk.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

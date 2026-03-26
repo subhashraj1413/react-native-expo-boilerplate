@@ -10,6 +10,7 @@ import { useTheme } from "@/hooks/useTheme";
 import { useSession } from "@/features/auth/hooks/useSession";
 import { FeedCard } from "@/features/feed/components/FeedCard";
 import { useFeed } from "@/features/feed/hooks/useFeed";
+import { NativeSdkCard } from "@/features/native-sdk/components/NativeSdkCard";
 
 export default function HomeScreen() {
   const { session } = useSession();
@@ -47,6 +48,10 @@ export default function HomeScreen() {
               </Link>
             </View>
           </LinearGradient>
+        </View>
+
+        <View className="mt-8">
+          <NativeSdkCard />
         </View>
 
         <View className="mt-8">
