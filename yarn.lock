@@ -4690,6 +4690,13 @@ expo-linking@~55.0.7:
     expo-constants "~55.0.7"
     invariant "^2.2.4"
 
+expo-local-authentication@~55.0.9:
+  version "55.0.9"
+  resolved "https://registry.yarnpkg.com/expo-local-authentication/-/expo-local-authentication-55.0.9.tgz#8993962566c62062b3d00503e945db2e40f9b402"
+  integrity sha512-WeFmISIOpq3VOg1DkUf2J9xtj7FJuFOjSN5z+z+fNFCjCuFY1vw20UMApbiEz7bOvE2w6tDYpTF4GJhaatKJ/Q==
+  dependencies:
+    invariant "^2.2.4"
+
 expo-localization@^55.0.8:
   version "55.0.8"
   resolved "https://registry.yarnpkg.com/expo-localization/-/expo-localization-55.0.8.tgz#1e78e8dc1af4d7f4eb5600cca48e10c6dff21bc0"
@@ -4745,6 +4752,11 @@ expo-router@~55.0.5:
     shallowequal "^1.1.0"
     use-latest-callback "^0.2.1"
     vaul "^1.1.2"
+
+expo-secure-store@~55.0.9:
+  version "55.0.9"
+  resolved "https://registry.yarnpkg.com/expo-secure-store/-/expo-secure-store-55.0.9.tgz#c07006de1c0dfadf2e09fef047e3bb0a96f80ce3"
+  integrity sha512-TIPGjM73LKlebpXwgAu/yL7lNWr6RQYmFw3vgYHOqLFYQMpsBqkQmopovbNX3c/0+RCE9KZlLAkcz8r6detILQ==
 
 expo-server@^55.0.6:
   version "55.0.6"

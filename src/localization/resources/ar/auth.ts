@@ -1,5 +1,24 @@
 export default {
   backToLogin: "العودة إلى تسجيل الدخول",
+  biometricCancel: "إلغاء",
+  biometricFailed: "فشل التحقق البيومتري. حاول مرة أخرى أو استخدم كلمة المرور.",
+  biometricFallback: "استخدم رمز الجهاز",
+  biometricLockedOut:
+    "تم قفل المصادقة البيومترية مؤقتاً. افتح الجهاز ثم حاول مرة أخرى.",
+  biometricLogin: "المتابعة عبر {{method}}",
+  biometricMethodFace: "Face ID",
+  biometricMethodFingerprint: "بصمة الإصبع",
+  biometricMethodGeneric: "المصادقة البيومترية",
+  biometricMethodIris: "مسح القزحية",
+  biometricMissingCredentials:
+    "تسجيل الدخول البيومتري غير جاهز بعد. سجّل الدخول مرة واحدة بالبريد وكلمة المرور أولاً.",
+  biometricPrompt: "أكّد باستخدام {{method}} لتسجيل الدخول",
+  biometricSavedCredentialsExpired:
+    "بيانات الاعتماد المحفوظة للمصادقة البيومترية لم تعد صالحة. سجّل الدخول بكلمة المرور لإعدادها من جديد.",
+  biometricSetupHint:
+    "سيصبح تسجيل الدخول عبر {{method}} متاحاً بعد أول تسجيل ناجح بكلمة المرور على هذا الجهاز.",
+  biometricUnavailable:
+    "تسجيل الدخول البيومتري غير متاح على هذا الجهاز أو لا توجد بيانات بيومترية مسجلة.",
   createAccount: "إنشاء حساب",
   createWorkspace: "إنشاء مساحة عمل",
   demo: "تجريبي: {{email}} / {{password}}",

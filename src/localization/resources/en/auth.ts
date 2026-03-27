@@ -1,5 +1,24 @@
 export default {
   backToLogin: "Back to login",
+  biometricCancel: "Cancel",
+  biometricFailed: "Biometric verification failed. Try again or use your password.",
+  biometricFallback: "Use passcode",
+  biometricLockedOut:
+    "Biometric authentication is temporarily locked. Unlock the device and try again.",
+  biometricLogin: "Continue with {{method}}",
+  biometricMethodFace: "Face ID",
+  biometricMethodFingerprint: "Fingerprint",
+  biometricMethodGeneric: "biometrics",
+  biometricMethodIris: "iris scan",
+  biometricMissingCredentials:
+    "Biometric sign-in is not ready yet. Sign in once with your email and password first.",
+  biometricPrompt: "Confirm with {{method}} to sign in",
+  biometricSavedCredentialsExpired:
+    "Saved biometric credentials are no longer valid. Sign in with your password to set them up again.",
+  biometricSetupHint:
+    "{{method}} sign-in becomes available after one successful password login on this device.",
+  biometricUnavailable:
+    "Biometric sign-in is unavailable on this device or no biometric is enrolled yet.",
   createAccount: "Create account",
   createWorkspace: "Create workspace",
   demo: "Demo: {{email}} / {{password}}",
